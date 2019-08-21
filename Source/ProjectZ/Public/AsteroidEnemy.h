@@ -13,5 +13,12 @@ UCLASS()
 class PROJECTZ_API AAsteroidEnemy : public AEnemyBase
 {
 	GENERATED_BODY()
-	
+
+public:
+	AAsteroidEnemy();
+
+		virtual void Tick(float deltaSeconds) override;
+
+		UPROPERTY()
+			class UStaticMeshComponent* smEnemy;
 };

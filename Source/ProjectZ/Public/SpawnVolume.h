@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+
 #include "SpawnVolume.generated.h"
 
 UCLASS()
@@ -15,6 +16,13 @@ public:
 	// Sets default values for this actor's properties
 	ASpawnVolume();
 
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Spawning", meta = (AllowPrivateAccess = "true"))
+		class UBoxComponent* WhereToSpawn;
+
+	UPROPERTY(EditAnywhere, Category = "Spawning")
+		TSubclassOf<class AActor> WhatToSpawn;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -22,5 +30,16 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION(BlueprintCallable)
+	FORCEINLINE UBoxComponent* GetWhereToSpawn() const { return WhereToSpawn; }
+
+
+	UFUNCTION(BlueprintPure, Category = "Spawning")
+	FVector GetRandomPointInVolume();
+
+
+private:
+	void Spawn();
 
 };

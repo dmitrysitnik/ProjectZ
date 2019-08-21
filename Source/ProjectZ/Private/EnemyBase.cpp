@@ -1,7 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "EnemyBase.h"
+#include "../Public/EnemyBase.h"
+
 
 // Sets default values
 AEnemyBase::AEnemyBase()
