@@ -5,6 +5,7 @@
 #include "UObject/ConstructorHelpers.h"
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Public/EnemyBase.h"
 #include "Engine/StaticMesh.h"
 
 AProjectZProjectile::AProjectZProjectile() 
@@ -39,6 +40,15 @@ void AProjectZProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor
 	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherComp->IsSimulatingPhysics())
 	{
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 20.0f, GetActorLocation());
+	}
+
+	if (OtherActor)
+	{
+		AEnemyBase* enemy = Cast<AEnemyBase>(OtherActor);
+		if (enemy)
+		{
+			enemy->Destroy();
+		}
 	}
 
 	Destroy();

@@ -5,6 +5,7 @@
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
+#include "Engine/StaticMesh.h"
 #include "Components/StaticMeshComponent.h"
 
 
@@ -16,6 +17,7 @@ AAsteroidEnemy::AAsteroidEnemy() {
 	smEnemy = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	RootComponent = smEnemy;
 	smEnemy->SetStaticMesh(Mesh.Object);
+	smEnemy->OnComponentBeginOverlap.AddDynamic(this, &AAsteroidEnemy::OnBeginOverlap);
 
 }
 
@@ -26,4 +28,12 @@ void AAsteroidEnemy::Tick(float deltaSeconds) {
 	/**«адать направление движени€ дл€ противников */
 	FVector newLocation = GetActorLocation() + GetActorForwardVector()* -1 * deltaSeconds * 600;
 	SetActorLocation(newLocation);
+}
+
+
+void AAsteroidEnemy::OnBeginOverlap(class UPrimitiveComponent* HitComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
+	bool bFromSweep, const FHitResult& SweepResult){
+
+
+
 }
