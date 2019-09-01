@@ -5,6 +5,7 @@
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
+#include "SpaceShip.h"
 #include "Engine/StaticMesh.h"
 #include "Components/StaticMeshComponent.h"
 
@@ -18,6 +19,7 @@ AAsteroidEnemy::AAsteroidEnemy() {
 	RootComponent = smEnemy;
 	smEnemy->SetStaticMesh(Mesh.Object);
 	smEnemy->OnComponentBeginOverlap.AddDynamic(this, &AAsteroidEnemy::OnBeginOverlap);
+	smEnemy->OnComponentHit.AddDynamic(this, &AAsteroidEnemy::OnHit);
 
 }
 
@@ -35,5 +37,22 @@ void AAsteroidEnemy::OnBeginOverlap(class UPrimitiveComponent* HitComp, class AA
 	bool bFromSweep, const FHitResult& SweepResult){
 
 
+
+}
+
+
+void AAsteroidEnemy::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+{
+
+
+	if (OtherActor)
+	{
+		ASpaceShip* spaceShip = Cast<ASpaceShip>(OtherActor);
+		if (spaceShip)
+		{
+			spaceShip->Destroy();
+			UE_LOG(LogTemp, Warning, TEXT("Destroy"));
+		}
+	}
 
 }

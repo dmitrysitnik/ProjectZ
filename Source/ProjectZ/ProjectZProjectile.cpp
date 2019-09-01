@@ -42,6 +42,8 @@ void AProjectZProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 20.0f, GetActorLocation());
 	}
 
+
+	//Delete the enemy actor from the scene
 	if (OtherActor)
 	{
 		AEnemyBase* enemy = Cast<AEnemyBase>(OtherActor);
