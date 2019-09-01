@@ -44,13 +44,15 @@ void AAsteroidEnemy::OnBeginOverlap(class UPrimitiveComponent* HitComp, class AA
 void AAsteroidEnemy::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
 
-
+    //destroy player's ship
 	if (OtherActor)
 	{
 		ASpaceShip* spaceShip = Cast<ASpaceShip>(OtherActor);
 		if (spaceShip)
 		{
-			spaceShip->Destroy();
+            spaceShip->SetActorHiddenInGame(true);
+            APlayerController* playerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+            playerController->DisableInput(playerController);
 			UE_LOG(LogTemp, Warning, TEXT("Destroy"));
 		}
 	}
