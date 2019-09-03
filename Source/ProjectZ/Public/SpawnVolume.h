@@ -26,6 +26,10 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+    
+    //The current spawn rate
+    UPROPERTY(EditAnywhere, Category = "Spawning")
+    float SpawnRate;
 
 public:	
 	// Called every frame
@@ -37,9 +41,16 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Spawning")
 	FVector GetRandomPointInVolume();
+    
+    
+    void SpawnTimerExpired();
+    
+    
+    FTimerHandle TimerHandle_SpawnTimer;
 
 
 private:
 	void Spawn();
+    bool bCanSpawn;
 
 };

@@ -3,6 +3,7 @@
 
 #include "../Public/SpawnVolume.h"
 #include "Runtime/Engine/Classes/Components/BoxComponent.h"
+#include "TimerManager.h"
 #include "Kismet/KismetMathLibrary.h"
 
 // Sets default values
@@ -14,6 +15,12 @@ ASpawnVolume::ASpawnVolume()
 	//Создать объект для спауна
 	WhereToSpawn = CreateDefaultSubobject<UBoxComponent>(TEXT("WhereToSpawn"));
 	RootComponent = WhereToSpawn;
+    
+    //Set the current spawn rate
+    SpawnRate = 1.5f;
+    
+    //Set the spawn flag to true
+    bCanSpawn = true;
 }
 
 // Called when the game starts or when spawned
@@ -42,16 +49,25 @@ FVector ASpawnVolume::GetRandomPointInVolume() {
 }
 
 
-
+//Method to spawn actors in the volume
 void ASpawnVolume::Spawn() {
-
-
-	if (WhatToSpawn != nullptr)
+    
+	if (WhatToSpawn != nullptr && bCanSpawn)
 	{
-
-		GetWorld()->SpawnActor<AActor>(WhatToSpawn, GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
-
+        UWorld* world = GetWorld();
+        
+		world->SpawnActor<AActor>(WhatToSpawn, GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
+        bCanSpawn = false;
+        world->GetTimerManager().SetTimer(TimerHandle_SpawnTimer, this, &ASpawnVolume::SpawnTimerExpired, SpawnRate);
 	}
 
 }
+
+//Function that set up the bCanSpawn to true value
+void ASpawnVolume::SpawnTimerExpired(){
+    bCanSpawn = true;
+}
+
+
+
 

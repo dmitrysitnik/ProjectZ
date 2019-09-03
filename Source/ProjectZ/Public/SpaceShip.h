@@ -18,6 +18,10 @@ class PROJECTZ_API ASpaceShip : public APawn
 	/** The camera */
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 		class UCameraComponent* CameraComponent;
+    
+    /** The sphere component */
+    UPROPERTY(Category = Spawning, VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+    class USphereComponent* SphereComponent;
 
 	/** Camera boom positioning the camera above the character */
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
