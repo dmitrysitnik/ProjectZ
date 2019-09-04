@@ -59,6 +59,7 @@ void ASpawnVolume::Spawn() {
 		world->SpawnActor<AActor>(WhatToSpawn, GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
         bCanSpawn = false;
         world->GetTimerManager().SetTimer(TimerHandle_SpawnTimer, this, &ASpawnVolume::SpawnTimerExpired, SpawnRate);
+        
 	}
 
 }

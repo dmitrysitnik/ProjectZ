@@ -58,17 +58,13 @@ void AAsteroidEnemy::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 
 void AAsteroidEnemy::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult){
     
-    UE_LOG(LogTemp, Warning, TEXT("Overlapped"));
-    
     //destroy player's ship. We just turn off the input and set the actor of a player to be hidden
     if (OtherActor)
     {
-        UE_LOG(LogTemp, Warning, TEXT("Overlapped actor"));
         //Check if the actor is a player's spaceship
         ASpaceShip* spaceShip = Cast<ASpaceShip>(OtherActor);
         if (spaceShip)
         {
-            UE_LOG(LogTemp, Warning, TEXT("Overlapped spaceship"));
             /** Set the actor to be hidden */
             spaceShip->SetActorHiddenInGame(true);
             //Get the player controller and turn off the input
