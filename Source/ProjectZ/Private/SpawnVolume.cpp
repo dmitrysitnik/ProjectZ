@@ -12,7 +12,7 @@ ASpawnVolume::ASpawnVolume()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	//Создать объект для спауна
+	//Create a box volume to spawn actors
 	WhereToSpawn = CreateDefaultSubobject<UBoxComponent>(TEXT("WhereToSpawn"));
 	RootComponent = WhereToSpawn;
     
@@ -34,7 +34,8 @@ void ASpawnVolume::BeginPlay()
 void ASpawnVolume::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+    
+    // Call the spawning function
 	Spawn();
 }
 
@@ -51,16 +52,15 @@ FVector ASpawnVolume::GetRandomPointInVolume() {
 
 //Method to spawn actors in the volume
 void ASpawnVolume::Spawn() {
-    
+    //Check if we can create a new actor in the game
 	if (WhatToSpawn.Last() != nullptr && bCanSpawn)
 	{
+        //Get a pointer to the current world
         UWorld* world = GetWorld();
+        //Spawn actor
+		world->SpawnActor<AActor>(WhatToSpawn[GetRandomIndexOfToSpawn()], GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
         
-        int32 randomIndex = GetRandomIndexOfToSpawn();
-        
-        UE_LOG(LogTemp, Warning, TEXT("index = %d"), randomIndex);
-        
-		world->SpawnActor<AActor>(WhatToSpawn[randomIndex], GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
+        //Set bCanSpawn to false and invoke the SpawnTimer
         bCanSpawn = false;
         world->GetTimerManager().SetTimer(TimerHandle_SpawnTimer, this, &ASpawnVolume::SpawnTimerExpired, SpawnRate);
         
@@ -75,9 +75,9 @@ void ASpawnVolume::SpawnTimerExpired(){
 
 
 int32 ASpawnVolume::GetRandomIndexOfToSpawn(){
-    
+    //Get the number of WhatToSpawn array
     int32 maxValue = WhatToSpawn.Num() - 1;
-    
+    //Return a number between zero and maxValue variable
     return maxValue > 0 ? UKismetMathLibrary::RandomIntegerInRange(0, maxValue) : 0;
     
 }
