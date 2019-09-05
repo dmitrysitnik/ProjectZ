@@ -18,8 +18,10 @@ public:
 	AAsteroidEnemy();
 
 		virtual void Tick(float deltaSeconds) override;
-
-		UPROPERTY()
+    
+    
+    
+		UPROPERTY(Category = "Look")
 			class UStaticMeshComponent* smEnemy;
 
 		UFUNCTION()

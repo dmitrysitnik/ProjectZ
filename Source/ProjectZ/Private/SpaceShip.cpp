@@ -153,6 +153,8 @@ void ASpaceShip::FireShot()
 	}
 }
 
+
+//the Function invokes on the timer expired
 void ASpaceShip::ShotTimerExpired()
 {
 	bCanFire = true;

@@ -16,12 +16,13 @@ class PROJECTZ_API AShieldBonus : public ABonusBase
     
 public:
     AShieldBonus() : ABonusBase(){
-        
+        //Add function to process overlapping 
         SmBonus->OnComponentBeginOverlap.AddDynamic(this, &AShieldBonus::OnBeginOverlap);
         
     };
     
 protected:
+    /** Apply this bonus */
     virtual void ApplyBonus() override;
     
     
