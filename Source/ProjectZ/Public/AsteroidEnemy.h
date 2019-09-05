@@ -21,7 +21,7 @@ public:
     
     
     
-		UPROPERTY(Category = "Look")
+		UPROPERTY(EditAnywhere, Category = "Look")
 			class UStaticMeshComponent* smEnemy;
 
 		UFUNCTION()

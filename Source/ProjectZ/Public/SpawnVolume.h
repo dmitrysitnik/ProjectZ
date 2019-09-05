@@ -21,7 +21,7 @@ public:
 		class UBoxComponent* WhereToSpawn;
 
 	UPROPERTY(EditAnywhere, Category = "Spawning")
-		TSubclassOf<class AActor> WhatToSpawn;
+		TArray<TSubclassOf<class AActor>> WhatToSpawn;
 
 protected:
 	// Called when the game starts or when spawned
@@ -30,6 +30,11 @@ protected:
     //The current spawn rate
     UPROPERTY(EditAnywhere, Category = "Spawning")
     float SpawnRate;
+    
+    
+    /** Gets the one of all actors to spawn  */
+    UFUNCTION()
+    int32 GetRandomIndexOfToSpawn();
 
 public:	
 	// Called every frame

@@ -52,11 +52,15 @@ FVector ASpawnVolume::GetRandomPointInVolume() {
 //Method to spawn actors in the volume
 void ASpawnVolume::Spawn() {
     
-	if (WhatToSpawn != nullptr && bCanSpawn)
+	if (WhatToSpawn.Last() != nullptr && bCanSpawn)
 	{
         UWorld* world = GetWorld();
         
-		world->SpawnActor<AActor>(WhatToSpawn, GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
+        int32 randomIndex = GetRandomIndexOfToSpawn();
+        
+        UE_LOG(LogTemp, Warning, TEXT("index = %d"), randomIndex);
+        
+		world->SpawnActor<AActor>(WhatToSpawn[randomIndex], GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
         bCanSpawn = false;
         world->GetTimerManager().SetTimer(TimerHandle_SpawnTimer, this, &ASpawnVolume::SpawnTimerExpired, SpawnRate);
         
@@ -67,6 +71,15 @@ void ASpawnVolume::Spawn() {
 //Function that set up the bCanSpawn to true value
 void ASpawnVolume::SpawnTimerExpired(){
     bCanSpawn = true;
+}
+
+
+int32 ASpawnVolume::GetRandomIndexOfToSpawn(){
+    
+    int32 maxValue = WhatToSpawn.Num() - 1;
+    
+    return maxValue > 0 ? UKismetMathLibrary::RandomIntegerInRange(0, maxValue) : 0;
+    
 }
 
 
