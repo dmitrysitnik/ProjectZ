@@ -66,7 +66,7 @@ void AAsteroidEnemy::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AA
         if (spaceShip)
         {
             /** Set the actor to be hidden */
-            spaceShip->SetActorHiddenInGame(true);
+            spaceShip->Death();
             //Get the player controller and turn off the input
             APlayerController* playerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
             playerController->DisableInput(playerController);

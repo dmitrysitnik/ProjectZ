@@ -45,6 +45,14 @@ public:
 	/** Sound to play each time we fire */
 	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
 		class USoundBase* FireSound;
+    
+    
+//    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UI")
+//    TSubclassOf<class UUserWidget>wUI;
+//    
+//    UUserWidget* pUI;
+//    
+//    void SetupUI();
 
 	// Begin Actor Interface
 	virtual void Tick(float DeltaSeconds) override;
@@ -53,6 +61,8 @@ public:
 
 	/* Fire a shot in the specified direction */
 	void FireShot();
+    
+    void Death();
 
 	/* Handler for the fire timer expiry */
 	void ShotTimerExpired();
@@ -67,6 +77,10 @@ private:
 
 	/* Flag to control firing  */
 	uint32 bCanFire : 1;
+    
+    bool bCanRestart;
+    
+    void Restart();
 
 	/** Handle for efficient management of ShotTimerExpired timer */
 	FTimerHandle TimerHandle_ShotTimerExpired;

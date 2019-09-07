@@ -18,6 +18,8 @@
 #include "Components/InputComponent.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "Components/SceneComponent.h"
+#include "Blueprint/UserWidget.h"
+#include "ProjectZGameMode.h"
 #include "Engine/World.h"
 
 
@@ -73,6 +75,7 @@ ASpaceShip::ASpaceShip()
 	GunOffset = FVector(90.f, 0.f, 0.f);
 	FireRate = 0.1f;
 	bCanFire = true;
+    bCanRestart = false;
 }
 
 
@@ -84,6 +87,7 @@ void ASpaceShip::SetupPlayerInputComponent(class UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAxis(MoveForwardBinding);
 	PlayerInputComponent->BindAxis(MoveRightBinding);
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ASpaceShip::FireShot);
+    PlayerInputComponent->BindAction("Restart", IE_Pressed, this, &ASpaceShip::Restart);
 }
 
 
@@ -159,6 +163,42 @@ void ASpaceShip::ShotTimerExpired()
 {
 	bCanFire = true;
 }
+
+
+void ASpaceShip::Restart(){
+    
+    AProjectZGameMode* gameMode = (AProjectZGameMode*)GetWorld()->GetAuthGameMode();
+    UE_LOG(LogTemp, Warning, TEXT("Restart"));
+    
+    
+    if(gameMode && bCanRestart){
+        bCanRestart = false;
+        gameMode->RestartLevel(GetWorld(), "main");
+    }
+    
+}
+
+
+
+void ASpaceShip::Death(){
+    bCanRestart  = true;
+    SetActorHiddenInGame(true);
+}
+
+//Temp implematation
+//void ASpaceShip::SetupUI(){
+// 
+//    if(wUI){
+//        APlayerController* PC = GetWorld()->GetFirstPlayerController();
+//        pUI = CreateWidget<UUserWidget>(PC, wUI);
+//        
+//        if(pUI){
+//            pUI->AddToViewport();
+//        }
+//        
+//    }
+//    
+//}
 
 
 
