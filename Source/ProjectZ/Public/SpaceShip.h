@@ -78,8 +78,10 @@ private:
 	/* Flag to control firing  */
 	uint32 bCanFire : 1;
     
+    /** Flag to control spawn ability */
     bool bCanRestart;
     
+    /** Logic bounded with a level restart*/
     void Restart();
 
 	/** Handle for efficient management of ShotTimerExpired timer */

@@ -14,7 +14,7 @@ class AProjectZGameMode : public AGameModeBase
 public:
 	AProjectZGameMode();
     
-    
+    /** Method to Restart a level*/
     void RestartLevel(UObject* world, FName levelName);
 };
 

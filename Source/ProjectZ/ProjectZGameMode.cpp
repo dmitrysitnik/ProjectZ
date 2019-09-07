@@ -12,8 +12,6 @@ AProjectZGameMode::AProjectZGameMode()
 
 
 void AProjectZGameMode::RestartLevel(UObject* world, FName levelName){
-    
-    
     UGameplayStatics::OpenLevel(world, levelName);
 }
 
