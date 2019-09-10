@@ -13,5 +13,11 @@ UCLASS()
 class PROJECTZ_API AExplosionBonus : public ABonusBase
 {
 	GENERATED_BODY()
+    
+    
+public:
+    
+    /** Make an explosion in the sphere area. Destroy all enemies actors in the area*/
+    void MakeExplosion();
 	
 };

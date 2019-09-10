@@ -3,3 +3,11 @@
 
 #include "ExplosionBonus.h"
 
+
+
+void AExplosionBonus::MakeExplosion(){
+    
+    
+    
+}
+
