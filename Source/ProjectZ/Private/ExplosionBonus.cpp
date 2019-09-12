@@ -3,6 +3,7 @@
 
 #include "ExplosionBonus.h"
 #include "Components/SphereComponent.h"
+#include "SpaceShip.h"
 #include "EnemyBase.h"
 
 
@@ -29,8 +30,6 @@ void AExplosionBonus::MakeExplosion(){
             if(enemy){
                 //Destroy the actor
                 enemy->Destroy();
-                // Should delete the bonus from level
-                Destroy();
             }
             
         }
@@ -52,6 +51,16 @@ void AExplosionBonus::ApplyBonus(){
 
 void AExplosionBonus::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult){
     
-    ApplyBonus();
+    
+    if(OtherActor){
+        ASpaceShip* player = Cast<ASpaceShip>(OtherActor);
+        
+        if(player){
+            UE_LOG(LogTemp, Warning, TEXT("Applied bonus"));
+            ApplyBonus();
+            Destroy();
+        }
+    }
+   
 }
 
