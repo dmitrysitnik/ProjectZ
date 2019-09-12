@@ -9,21 +9,26 @@
 
 void AExplosionBonus::MakeExplosion(){
     
+    
+    //Get the overlapping actors from sphere component
     TArray<AActor*> overlappedActors;
     SphereComponent->GetOverlappingActors(overlappedActors);
     
-    
+    //    Check all overlapped actors
     for (int current = 0; current < overlappedActors.Num(); current++) {
         
+        //Get the current actor from index
         AActor* currentActor = overlappedActors[current];
         
+        //Check if the actor is not null
         if(currentActor){
             
-            AEnemyBase* enemy = Cast<AEnemyBase>(currentActor);
             
+            //Try convert the actor to an enemy actor
+            AEnemyBase* enemy = Cast<AEnemyBase>(currentActor);
             if(enemy){
+                //Destroy the actor
                 enemy->Destroy();
-                UE_LOG(LogTemp, Warning, TEXT("Destroy an actor from explosion"));
             }
             
         }
@@ -35,7 +40,12 @@ void AExplosionBonus::MakeExplosion(){
 
 
 void AExplosionBonus::ApplyBonus(){
+    
+    //Create an explosion in the sphere raduis
     MakeExplosion();
+    
+    // Should delete the bonus from level
+    Destroy();
 }
 
 
