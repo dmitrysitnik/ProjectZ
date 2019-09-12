@@ -29,6 +29,8 @@ void AExplosionBonus::MakeExplosion(){
             if(enemy){
                 //Destroy the actor
                 enemy->Destroy();
+                // Should delete the bonus from level
+                Destroy();
             }
             
         }
@@ -44,8 +46,7 @@ void AExplosionBonus::ApplyBonus(){
     //Create an explosion in the sphere raduis
     MakeExplosion();
     
-    // Should delete the bonus from level
-    Destroy();
+    
 }
 
 
