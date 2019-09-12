@@ -183,6 +183,8 @@ void ASpaceShip::Restart(){
 void ASpaceShip::Death(){
     bCanRestart  = true;
     SetActorHiddenInGame(true);
+    DisableInput(GetWorld()->GetFirstPlayerController<APlayerController>());
+    
 }
 
 //Temp implematation

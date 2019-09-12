@@ -17,7 +17,8 @@ AProjectZProjectile::AProjectZProjectile()
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh0"));
 	ProjectileMesh->SetStaticMesh(ProjectileMeshAsset.Object);
 	ProjectileMesh->SetupAttachment(RootComponent);
-	ProjectileMesh->BodyInstance.SetCollisionProfileName("Projectile");
+//    ProjectileMesh->BodyInstance.SetCollisionProfileName("Projectile");
+//    ProjectileMesh->BodyInstance.SetCollisionProfileName("OverlapAll");
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectZProjectile::OnHit);		// set up a notification for when this component hits something
 	RootComponent = ProjectileMesh;
 
@@ -36,11 +37,11 @@ AProjectZProjectile::AProjectZProjectile()
 
 void AProjectZProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	// Only add impulse and destroy projectile if we hit a physics
-	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherComp->IsSimulatingPhysics())
-	{
-		OtherComp->AddImpulseAtLocation(GetVelocity() * 20.0f, GetActorLocation());
-	}
+//    // Only add impulse and destroy projectile if we hit a physics
+//    if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherComp->IsSimulatingPhysics())
+//    {
+//        OtherComp->AddImpulseAtLocation(GetVelocity() * 20.0f, GetActorLocation());
+//    }
 
 
 	//Delete the enemy actor from the scene
@@ -50,8 +51,9 @@ void AProjectZProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor
 		if (enemy)
 		{
 			enemy->Destroy();
+            Destroy();
 		}
 	}
 
-	Destroy();
+	
 }
