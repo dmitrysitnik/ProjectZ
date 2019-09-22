@@ -62,6 +62,7 @@ public:
 	/* Fire a shot in the specified direction */
 	void FireShot();
     
+    /* Player death function */
     void Death();
 
 	/* Handler for the fire timer expiry */

@@ -39,23 +39,28 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
+    
+    
+    //Bounds of the box to spawn
 	UFUNCTION(BlueprintCallable)
 	FORCEINLINE UBoxComponent* GetWhereToSpawn() const { return WhereToSpawn; }
 
-
+    //Get random point in the box volume
 	UFUNCTION(BlueprintPure, Category = "Spawning")
 	FVector GetRandomPointInVolume();
     
-    
+    //Function to call on timer expired
     void SpawnTimerExpired();
     
-    
+    //Timer to handle spawn process
     FTimerHandle TimerHandle_SpawnTimer;
 
 
 private:
+    //Spawn function
 	void Spawn();
+    
+    //Can spawn flag
     bool bCanSpawn;
 
 };
