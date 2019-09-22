@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "WavesController.h"
+
 
 #include "SpawnVolume.generated.h"
 
@@ -41,7 +41,7 @@ protected:
     int32 GetRandomIndexOfToSpawn();
     
     
-    WavesController* WavesController;
+    class WavesController* WavesController;
 
 public:	
 	// Called every frame

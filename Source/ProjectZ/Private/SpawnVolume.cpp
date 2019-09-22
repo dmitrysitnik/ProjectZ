@@ -4,6 +4,7 @@
 #include "../Public/SpawnVolume.h"
 #include "Runtime/Engine/Classes/Components/BoxComponent.h"
 #include "TimerManager.h"
+#include "WavesController.h"
 #include "Kismet/KismetMathLibrary.h"
 
 // Sets default values
@@ -21,6 +22,9 @@ ASpawnVolume::ASpawnVolume()
     
     //Set the spawn flag to true
     bCanSpawn = true;
+    
+    //Create waveController instance
+    WavesController = new class WavesController(GetWorld());
 }
 
 // Called when the game starts or when spawned

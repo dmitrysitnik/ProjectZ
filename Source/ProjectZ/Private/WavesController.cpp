@@ -10,4 +10,5 @@ WavesController::WavesController(UWorld* world)
 
 WavesController::~WavesController()
 {
+    delete World;
 }
