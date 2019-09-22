@@ -40,7 +40,7 @@ protected:
     UFUNCTION()
     int32 GetRandomIndexOfToSpawn();
     
-    
+    /*Class to control waves in the game */
     class WavesController* WavesController;
 
 public:	
