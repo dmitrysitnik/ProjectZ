@@ -20,7 +20,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
     
-    
+    //virtual function to override in inherited classes which applies a class bonus
     virtual void ApplyBonus();
     
     
