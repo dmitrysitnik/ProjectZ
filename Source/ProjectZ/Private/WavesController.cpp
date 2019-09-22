@@ -3,8 +3,9 @@
 
 #include "WavesController.h"
 
-WavesController::WavesController()
+WavesController::WavesController(UWorld* world)
 {
+    World = world;
 }
 
 WavesController::~WavesController()

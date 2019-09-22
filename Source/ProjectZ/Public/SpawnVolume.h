@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "WavesController.h"
 
 #include "SpawnVolume.generated.h"
 
@@ -22,6 +23,9 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Spawning")
 		TArray<TSubclassOf<class AActor>> WhatToSpawn;
+    
+    
+    
 
 protected:
 	// Called when the game starts or when spawned
@@ -35,6 +39,9 @@ protected:
     /** Gets the one of all actors to spawn  */
     UFUNCTION()
     int32 GetRandomIndexOfToSpawn();
+    
+    
+    WavesController* WavesController;
 
 public:	
 	// Called every frame

@@ -10,6 +10,13 @@
 class PROJECTZ_API WavesController
 {
 public:
-	WavesController();
+	WavesController(UWorld* world);
 	~WavesController();
+    
+protected:
+    //Timer to handle spawn process
+    FTimerHandle TimerHandle_WaveTimer;
+    
+    
+    UWorld* World;
 };
