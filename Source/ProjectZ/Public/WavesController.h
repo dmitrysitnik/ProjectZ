@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 
 /**
- * 
+ class helper to process waves in a game session. Provide the functionality to change count, spawn rate ant other.
  */
 class PROJECTZ_API WavesController
 {
