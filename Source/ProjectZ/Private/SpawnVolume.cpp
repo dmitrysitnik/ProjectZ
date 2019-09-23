@@ -31,7 +31,6 @@ ASpawnVolume::ASpawnVolume()
 void ASpawnVolume::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
@@ -43,7 +42,7 @@ void ASpawnVolume::Tick(float DeltaTime)
 	Spawn();
 }
 
-
+//Get a random point in the volume
 FVector ASpawnVolume::GetRandomPointInVolume() {
 
 	FVector SpawnOrigin = WhereToSpawn->Bounds.Origin;
@@ -78,6 +77,7 @@ void ASpawnVolume::SpawnTimerExpired(){
 }
 
 
+//Get random index from ToSpawn array
 int32 ASpawnVolume::GetRandomIndexOfToSpawn(){
     //Get the number of WhatToSpawn array
     int32 maxValue = WhatToSpawn.Num() - 1;
