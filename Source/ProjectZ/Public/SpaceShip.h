@@ -82,6 +82,9 @@ private:
     /** Flag to control spawn ability */
     bool bCanRestart;
     
+    /* Flag to control state of player live**/
+    bool bIsDead;
+    
     /** Logic bounded with a level restart*/
     void Restart();
 

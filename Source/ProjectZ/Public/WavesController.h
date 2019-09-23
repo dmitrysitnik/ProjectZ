@@ -17,6 +17,6 @@ protected:
     //Timer to handle spawn process
     FTimerHandle TimerHandle_WaveTimer;
     
-    
+    //reference to the current world
     UWorld* World;
 };
