@@ -76,6 +76,7 @@ ASpaceShip::ASpaceShip()
 	FireRate = 0.1f;
 	bCanFire = true;
     bCanRestart = false;
+    bIsDead = false;
 }
 
 
@@ -93,6 +94,9 @@ void ASpaceShip::SetupPlayerInputComponent(class UInputComponent* PlayerInputCom
 
 void ASpaceShip::Tick(float DeltaSeconds)
 {
+    
+    if(bIsDead) return;
+    
 	// Find movement direction
 	const float ForwardValue = GetInputAxisValue(MoveForwardBinding);
 	const float RightValue = GetInputAxisValue(MoveRightBinding);
@@ -182,8 +186,9 @@ void ASpaceShip::Restart(){
 
 void ASpaceShip::Death(){
     bCanRestart  = true;
+    bIsDead = true;
     SetActorHiddenInGame(true);
-    DisableInput(GetWorld()->GetFirstPlayerController<APlayerController>());
+//    DisableInput(GetWorld()->GetFirstPlayerController<APlayerController>());
     
 }
 
