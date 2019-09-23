@@ -198,20 +198,5 @@ void ASpaceShip::Death(){
     
 }
 
-//Temp implematation
-//void ASpaceShip::SetupUI(){
-// 
-//    if(wUI){
-//        APlayerController* PC = GetWorld()->GetFirstPlayerController();
-//        pUI = CreateWidget<UUserWidget>(PC, wUI);
-//        
-//        if(pUI){
-//            pUI->AddToViewport();
-//        }
-//        
-//    }
-//    
-//}
-
 
 
