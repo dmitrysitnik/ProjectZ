@@ -185,10 +185,16 @@ void ASpaceShip::Restart(){
 
 
 void ASpaceShip::Death(){
+    
+    //Set the flags of a player state
+    //Now can restart and cannot fire
     bCanRestart  = true;
     bIsDead = true;
+    bCanFire = false;
+    
+    
+    //Hide the actor on a level
     SetActorHiddenInGame(true);
-//    DisableInput(GetWorld()->GetFirstPlayerController<APlayerController>());
     
 }
 
