@@ -46,13 +46,6 @@ public:
 	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
 		class USoundBase* FireSound;
     
-    
-//    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UI")
-//    TSubclassOf<class UUserWidget>wUI;
-//    
-//    UUserWidget* pUI;
-//    
-//    void SetupUI();
 
 	// Begin Actor Interface
 	virtual void Tick(float DeltaSeconds) override;
@@ -64,6 +57,9 @@ public:
     
     /* Player death function */
     void Death();
+    
+    UFUNCTION(BlueprintCallable)
+    void SetInvulnerable(bool bInvulnerable);
 
 	/* Handler for the fire timer expiry */
 	void ShotTimerExpired();
@@ -84,6 +80,9 @@ private:
     
     /* Flag to control state of player live**/
     bool bIsDead;
+    
+    /* Flag to control */
+    bool bIsGod;
     
     /** Logic bounded with a level restart*/
     void Restart();
