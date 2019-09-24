@@ -18,9 +18,17 @@ public:
     AShieldBonus() : ABonusBase(){
         //Add function to process overlapping 
         SmBonus->OnComponentBeginOverlap.AddDynamic(this, &AShieldBonus::OnBeginOverlap);
+        mDuration = 5.0f;
     };
     
+    
+    UPROPERTY(EditAnywhere, Category = "Settings")
+    float mDuration;
+    
 protected:
+    //reference to the player's ship
+    class ASpaceShip* mSpaceShip;
+    
     /** Apply this bonus */
     virtual void ApplyBonus() override;
     

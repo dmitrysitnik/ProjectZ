@@ -6,8 +6,10 @@
 
 
 void AShieldBonus::ApplyBonus(){
-    //Temp implemantation for a check applying
-    UE_LOG(LogTemp, Warning, TEXT("Bonus applied"));
+    
+    if(mSpaceShip){
+        mSpaceShip->SetInvulnerable(true, mDuration);
+    }
     
 }
 
@@ -22,10 +24,12 @@ void AShieldBonus::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AAct
         if (spaceShip)
         {
             
+            //Save the reference to the SpaceShip
+            mSpaceShip = spaceShip;
+            
             //Apply bonus to the player
             ApplyBonus();
             Destroy();
-            
         }
     }
     
