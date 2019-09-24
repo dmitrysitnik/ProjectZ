@@ -28,7 +28,7 @@ void AAsteroidEnemy::Tick(float deltaSeconds) {
 
 	Super::Tick(deltaSeconds);
 
-	/**«адать направление движени€ дл€ противников */
+	/**Make the actor move to the bottom of a screen*/
 	FVector newLocation = GetActorLocation() + GetActorForwardVector()* -1 * deltaSeconds * 600;
 	SetActorLocation(newLocation);
 }
@@ -44,8 +44,7 @@ void AAsteroidEnemy::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 		ASpaceShip* spaceShip = Cast<ASpaceShip>(OtherActor);
 		if (spaceShip)
 		{
-            /** Set the actor to be hidden */
-            spaceShip->SetActorHiddenInGame(true);
+            spaceShip->Death();
             //Get the player controller and turn off the input
             APlayerController* playerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
             playerController->DisableInput(playerController);

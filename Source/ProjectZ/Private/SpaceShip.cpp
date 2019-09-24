@@ -181,6 +181,11 @@ void ASpaceShip::Restart(){
 
 void ASpaceShip::Death(){
     
+    
+    //If player is invulnerable now then do not make him dead
+    if(bIsGod) return;
+    
+    
     //Set the flags of a player state
     //Now can restart and cannot fire
     bCanRestart  = true;
