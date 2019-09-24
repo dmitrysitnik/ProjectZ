@@ -199,7 +199,6 @@ void ASpaceShip::Death(){
 }
 
 
-
 void ASpaceShip::SetInvulnerable(bool bInvulnerable){
     bIsGod = bInvulnerable;
 }
