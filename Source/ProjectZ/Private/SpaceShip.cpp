@@ -123,11 +123,6 @@ void ASpaceShip::Tick(float DeltaSeconds)
 		}
 	}
 
-	// Create fire direction vector
-	/*const float FireForwardValue = GetInputAxisValue(FireForwardBinding);
-	const float FireRightValue = GetInputAxisValue(FireRightBinding);
-	const FVector FireDirection = FVector(FireForwardValue, FireRightValue, 0.f);
-*/
 }
 
 void ASpaceShip::FireShot()
@@ -199,8 +194,17 @@ void ASpaceShip::Death(){
 }
 
 
-void ASpaceShip::SetInvulnerable(bool bInvulnerable){
+void ASpaceShip::SetInvulnerableFalse(){
+    SetInvulnerable(false);
+}
+
+
+void ASpaceShip::SetInvulnerable(bool bInvulnerable, float invulnerableSeconds){
     bIsGod = bInvulnerable;
+    
+    if (bIsGod) {
+        GetWorld()->GetTimerManager().SetTimer(TimerHandle_ShieldExpired, this, &ASpaceShip::SetInvulnerableFalse, invulnerableSeconds);
+    }
 }
 
 

@@ -61,10 +61,14 @@ public:
     
     /* Set new state for the invulnerable flag **/
     UFUNCTION(BlueprintCallable)
-    void SetInvulnerable(bool bInvulnerable);
+    void SetInvulnerable(bool bInvulnerable, float invulnerableSeconds = 0.0f);
 
 	/* Handler for the fire timer expiry */
 	void ShotTimerExpired();
+    
+    
+    /* Disable the invulnerable flag**/
+    void SetInvulnerableFalse();
 
 	//// Static names for axis bindings
 	static const FName MoveForwardBinding;
