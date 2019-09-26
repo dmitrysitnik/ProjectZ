@@ -14,6 +14,10 @@ public:
     
 	~WavesController();
     
+    
+    UPROPERTY(EditAnywhere, Category = "Waves")
+    float mWaveDuration = 30.0f;
+    
 protected:
     //Timer to handle spawn process
     FTimerHandle TimerHandle_WaveTimer;
