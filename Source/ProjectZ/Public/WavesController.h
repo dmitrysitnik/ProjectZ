@@ -14,14 +14,16 @@ public:
     
 	~WavesController();
     
-    unsigned int mEnemiesInWave = 30;
-    unsigned int mCurrentSpawned = 0;
+
+    void AddSpawnEnemy();
+    
 protected:
     //Timer to handle spawn process
     FTimerHandle TimerHandle_WaveTimer;
     
     
-    void AddSpawnEnemy();
+    unsigned int mEnemiesInWave = 30;
+    unsigned int mCurrentSpawned = 0;
     
     //reference to the current world
     UWorld* World;

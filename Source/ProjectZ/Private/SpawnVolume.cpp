@@ -4,6 +4,7 @@
 #include "../Public/SpawnVolume.h"
 #include "Runtime/Engine/Classes/Components/BoxComponent.h"
 #include "TimerManager.h"
+#include "EnemyBase.h"
 #include "WavesController.h"
 #include "Kismet/KismetMathLibrary.h"
 
@@ -60,8 +61,16 @@ void ASpawnVolume::Spawn() {
 	{
         //Get a pointer to the current world
         UWorld* world = GetWorld();
+        
+        
         //Spawn actor
-		world->SpawnActor<AActor>(WhatToSpawn[GetRandomIndexOfToSpawn()], GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
+		AActor* spawnedActor = world->SpawnActor<AActor>(WhatToSpawn[GetRandomIndexOfToSpawn()], GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
+        
+        
+        AEnemyBase* enemy = Cast<AEnemyBase>(spawnedActor);
+        if(enemy){
+            WavesController->AddSpawnEnemy();
+        }
         
         //Set bCanSpawn to false and invoke the SpawnTimer
         bCanSpawn = false;
