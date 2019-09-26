@@ -11,6 +11,7 @@ class PROJECTZ_API WavesController
 {
 public:
 	WavesController(UWorld* world);
+    
 	~WavesController();
     
 protected:
