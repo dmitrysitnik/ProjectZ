@@ -12,3 +12,8 @@ WavesController::~WavesController()
 {
     delete World;
 }
+
+
+void WavesController::AddSpawnEnemy(){
+    mCurrentSpawned++;
+}
