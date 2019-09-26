@@ -14,14 +14,14 @@ public:
     
 	~WavesController();
     
-
+    //Count spawned enemies
     void AddSpawnEnemy();
     
 protected:
     //Timer to handle spawn process
     FTimerHandle TimerHandle_WaveTimer;
     
-    
+    //Properties for control
     unsigned int mEnemiesInWave = 30;
     unsigned int mCurrentSpawned = 0;
     
