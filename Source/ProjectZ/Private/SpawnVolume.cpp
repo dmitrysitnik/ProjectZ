@@ -26,11 +26,11 @@ ASpawnVolume::ASpawnVolume()
     
     
     //Initialize the count of enemies
-    mEnemiesInWave = 4.0f;
+    mEnemiesInWave = 30.0f;
     
     
     //Initialize enemies pause time in seconds
-    SpawnEnemiesPause = 10.0f;
+    SpawnEnemiesPause = 15.0f;
     
     //Create waveController instance
     WavesHelper = new class WavesController(mEnemiesInWave);
