@@ -17,9 +17,15 @@ public:
     //Count spawned enemies
     void AddSpawnEnemy();
     
+    
+    
+    FORCEINLINE bool IsCanSpawn() { return bCanSpawn; } const;
+    FORCEINLINE void SetCanSpawn(bool bSpawn){ bCanSpawn = bSpawn };
+    
+    
+    
+    
 protected:
-    //Timer to handle spawn process
-    FTimerHandle TimerHandle_WaveTimer;
     
     //Properties for control
     unsigned int mEnemiesInWave = 30;
@@ -27,4 +33,13 @@ protected:
     
     //reference to the current world
     UWorld* World;
+    
+    
+    //Flag to control spawn process
+    bool bCanSpawn;
+    
+    
+    
+    
+    
 };

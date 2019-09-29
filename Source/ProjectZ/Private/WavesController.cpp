@@ -16,4 +16,15 @@ WavesController::~WavesController()
 
 void WavesController::AddSpawnEnemy(){
     mCurrentSpawned++;
+    
+    
+    if(mCurrentSpawned >= mEnemiesInWave){
+        bCanSpawn = false;
+        
+        
+    }
 }
+
+
+
+

@@ -24,6 +24,10 @@ ASpawnVolume::ASpawnVolume()
     //Set the spawn flag to true
     bCanSpawn = true;
     
+    
+    //Initialize enemies pause time in seconds
+    SpawnEnemiesPause = 10.0f;
+    
     //Create waveController instance
     WavesController = new class WavesController(GetWorld());
 }

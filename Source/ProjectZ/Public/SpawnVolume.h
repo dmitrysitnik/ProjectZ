@@ -36,6 +36,10 @@ protected:
     float SpawnRate;
     
     
+    UPROPERTY(EditAnywhere, Category = "Spawning")
+    float SpawnEnemiesPause;
+    
+    
     /** Gets the one of all actors to spawn  */
     UFUNCTION()
     int32 GetRandomIndexOfToSpawn();
@@ -61,6 +65,9 @@ public:
     
     //Timer to handle spawn process
     FTimerHandle TimerHandle_SpawnTimer;
+    
+    //Timer to handle spawn process
+    FTimerHandle TimerHandle_WavePauseTimer;
 
 
 private:
