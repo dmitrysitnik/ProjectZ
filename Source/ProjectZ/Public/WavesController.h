@@ -19,8 +19,8 @@ public:
     
     
     
-    FORCEINLINE bool IsCanSpawn() { return bCanSpawn; } const;
-    FORCEINLINE void SetCanSpawn(bool bSpawn){ bCanSpawn = bSpawn };
+    FORCEINLINE bool IsCanSpawn() const { return bCanSpawn; } ;
+    FORCEINLINE void SetCanSpawn(bool bSpawn){ bCanSpawn = bSpawn; };
     
     
     

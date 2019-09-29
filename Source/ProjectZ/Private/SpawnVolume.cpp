@@ -29,7 +29,7 @@ ASpawnVolume::ASpawnVolume()
     SpawnEnemiesPause = 10.0f;
     
     //Create waveController instance
-    WavesController = new class WavesController(GetWorld());
+    WavesHelper = new class WavesController(GetWorld());
 }
 
 // Called when the game starts or when spawned
@@ -73,7 +73,7 @@ void ASpawnVolume::Spawn() {
         
         AEnemyBase* enemy = Cast<AEnemyBase>(spawnedActor);
         if(enemy){
-            WavesController->AddSpawnEnemy();
+            WavesHelper->AddSpawnEnemy();
         }
         
         //Set bCanSpawn to false and invoke the SpawnTimer
@@ -97,4 +97,9 @@ int32 ASpawnVolume::GetRandomIndexOfToSpawn(){
     //Return a number between zero and maxValue variable
     return maxValue > 0 ? UKismetMathLibrary::RandomIntegerInRange(0, maxValue) : 0;
     
+}
+
+
+void ASpawnVolume::WavePauseTimerExpired(){
+    WavesHelper->SetCanSpawn(true);
 }

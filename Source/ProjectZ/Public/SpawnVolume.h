@@ -45,7 +45,7 @@ protected:
     int32 GetRandomIndexOfToSpawn();
     
     /*Class to control waves in the game */
-    class WavesController* WavesController;
+    class WavesController* WavesHelper;
 
 public:	
 	// Called every frame
@@ -62,6 +62,9 @@ public:
     
     //Function to call on timer expired
     void SpawnTimerExpired();
+    
+    //Function to call timer expired
+    void WavePauseTimerExpired();
     
     //Timer to handle spawn process
     FTimerHandle TimerHandle_SpawnTimer;
