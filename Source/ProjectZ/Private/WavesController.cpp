@@ -15,11 +15,16 @@ WavesController::~WavesController()
 
 
 void WavesController::AddSpawnEnemy(){
+    CheckWaveEnd();
     mCurrentSpawned++;
-    
-    
+}
+
+
+void WavesController::CheckWaveEnd(){
+    //if wave has ended turn off the spawn flag and reset the  counter of spawned enemies
     if(mCurrentSpawned >= mEnemiesInWave){
         bCanSpawn = false;
+        mCurrentSpawned = 0;
     }
 }
 

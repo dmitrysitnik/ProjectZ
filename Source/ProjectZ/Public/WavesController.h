@@ -36,4 +36,6 @@ protected:
     bool bCanSpawn;
     
     
+    //Check if the wave has ended
+    void CheckWaveEnd();
 };
