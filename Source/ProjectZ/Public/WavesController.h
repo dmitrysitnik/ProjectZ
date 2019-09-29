@@ -18,11 +18,8 @@ public:
     void AddSpawnEnemy();
     
     
-    
     FORCEINLINE bool IsCanSpawn() const { return bCanSpawn; } ;
     FORCEINLINE void SetCanSpawn(bool bSpawn){ bCanSpawn = bSpawn; };
-    
-    
     
     
 protected:
@@ -37,9 +34,6 @@ protected:
     
     //Flag to control spawn process
     bool bCanSpawn;
-    
-    
-    
     
     
 };
