@@ -40,6 +40,10 @@ protected:
     float SpawnEnemiesPause;
     
     
+    UPROPERTY(EditAnywhere, Category = "Spawning")
+    unsigned int mEnemiesInWave;
+    
+    
     /** Gets the one of all actors to spawn  */
     UFUNCTION()
     int32 GetRandomIndexOfToSpawn();

@@ -25,11 +25,15 @@ ASpawnVolume::ASpawnVolume()
     bCanSpawn = true;
     
     
+    //Initialize the count of enemies
+    mEnemiesInWave = 3.0f;
+    
+    
     //Initialize enemies pause time in seconds
     SpawnEnemiesPause = 10.0f;
     
     //Create waveController instance
-    WavesHelper = new class WavesController(GetWorld());
+    WavesHelper = new class WavesController(mEnemiesInWave);
 }
 
 // Called when the game starts or when spawned
@@ -72,13 +76,19 @@ void ASpawnVolume::Spawn() {
         
         
         AEnemyBase* enemy = Cast<AEnemyBase>(spawnedActor);
-        if(enemy){
+        if(enemy && WavesHelper->IsCanSpawn()){
             WavesHelper->AddSpawnEnemy();
         }
         
         //Set bCanSpawn to false and invoke the SpawnTimer
         bCanSpawn = false;
         world->GetTimerManager().SetTimer(TimerHandle_SpawnTimer, this, &ASpawnVolume::SpawnTimerExpired, SpawnRate);
+        
+        
+        
+        if(!WavesHelper->IsCanSpawn()){
+            world->GetTimerManager().SetTimer(TimerHandle_WavePauseTimer, this, &ASpawnVolume::WavePauseTimerExpired, SpawnEnemiesPause);
+        }
         
 	}
 

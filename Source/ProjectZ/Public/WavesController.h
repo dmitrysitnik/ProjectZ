@@ -10,7 +10,7 @@
 class PROJECTZ_API WavesController
 {
 public:
-	WavesController(UWorld* world);
+	WavesController(unsigned int waveCount);
     
 	~WavesController();
     
@@ -25,11 +25,9 @@ public:
 protected:
     
     //Properties for control
-    unsigned int mEnemiesInWave = 30;
+    unsigned int mEnemiesInWave;
     unsigned int mCurrentSpawned = 0;
     
-    //reference to the current world
-    UWorld* World;
     
     
     //Flag to control spawn process

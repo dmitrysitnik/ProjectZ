@@ -3,14 +3,13 @@
 
 #include "WavesController.h"
 
-WavesController::WavesController(UWorld* world)
+WavesController::WavesController(unsigned int mCount)
 {
-    World = world;
+    mEnemiesInWave = mCount;
 }
 
 WavesController::~WavesController()
 {
-    delete World;
 }
 
 
