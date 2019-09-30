@@ -73,7 +73,7 @@ public:
     //Timer to handle spawn process
     FTimerHandle TimerHandle_SpawnTimer;
     
-    //Timer to handle spawn process
+    //Timer to handle waves spawn process
     FTimerHandle TimerHandle_WavePauseTimer;
 
 
