@@ -20,7 +20,9 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
+    
+    
+    //Ref to class that will be spawned by spawnVolume
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	TSubclassOf<class AActor> enemyToSpawn;
 

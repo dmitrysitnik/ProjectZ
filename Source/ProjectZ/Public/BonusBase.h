@@ -29,10 +29,11 @@ public:
 	virtual void Tick(float DeltaTime) override;
     
     
+    //Sphere component to interact with actors in the boundaries
     UPROPERTY(Category = Collision, VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
     class USphereComponent* SphereComponent;
     
-    
+    //Static mesh component to make differnt shape bonuses
     UPROPERTY(Category = Collision, VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
     class UStaticMeshComponent* SmBonus;
     
