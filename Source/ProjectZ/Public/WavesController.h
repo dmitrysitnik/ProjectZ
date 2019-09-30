@@ -10,6 +10,7 @@
 class PROJECTZ_API WavesController
 {
 public:
+    //Constructor of the class
 	WavesController(unsigned int waveCount);
     
 	~WavesController();
@@ -17,8 +18,10 @@ public:
     //Count spawned enemies
     void AddSpawnEnemy();
     
-    
+    //Get the flag out from class
     FORCEINLINE bool IsCanSpawn() const { return bCanSpawn; } ;
+    
+    //Method to control Wave spawn out of class
     FORCEINLINE void SetCanSpawn(bool bSpawn){ bCanSpawn = bSpawn; };
     
     
@@ -26,8 +29,10 @@ protected:
     
     //Properties for control
     unsigned int mEnemiesInWave;
-    unsigned int mCurrentSpawned = 0;
     
+    
+    //Counter of spawned enemies
+    unsigned int mCurrentSpawned = 0;
     
     
     //Flag to control spawn process
