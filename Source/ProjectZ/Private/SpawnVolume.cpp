@@ -24,10 +24,8 @@ ASpawnVolume::ASpawnVolume()
     //Set the spawn flag to true
     bCanSpawn = true;
     
-    
     //Initialize the count of enemies
     mEnemiesInWave = 30.0f;
-    
     
     //Initialize enemies pause time in seconds
     SpawnEnemiesPause = 15.0f;
@@ -84,7 +82,6 @@ void ASpawnVolume::Spawn() {
         bCanSpawn = false;
         world->GetTimerManager().SetTimer(TimerHandle_SpawnTimer, this, &ASpawnVolume::SpawnTimerExpired, SpawnRate);
         
-        
         //Wait for next time spawn,
         if(!WavesHelper->IsCanSpawn()){
             world->GetTimerManager().SetTimer(TimerHandle_WavePauseTimer, this, &ASpawnVolume::WavePauseTimerExpired, SpawnEnemiesPause);
@@ -109,7 +106,7 @@ int32 ASpawnVolume::GetRandomIndexOfToSpawn(){
     
 }
 
-
+//Functon that will be called after timer has expired
 void ASpawnVolume::WavePauseTimerExpired(){
     WavesHelper->SetCanSpawn(true);
 }
