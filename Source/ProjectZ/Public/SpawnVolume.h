@@ -35,11 +35,11 @@ protected:
     UPROPERTY(EditAnywhere, Category = "Spawning")
     float SpawnRate;
     
-    
+    //Time of delay after wave's finish
     UPROPERTY(EditAnywhere, Category = "Spawning")
     float SpawnEnemiesPause;
     
-    
+    //Quantity of enemies in every wave
     UPROPERTY(EditAnywhere, Category = "Spawning")
     unsigned int mEnemiesInWave;
     
