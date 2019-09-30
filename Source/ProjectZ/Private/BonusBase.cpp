@@ -31,7 +31,6 @@ ABonusBase::ABonusBase()
 void ABonusBase::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
@@ -46,6 +45,6 @@ void ABonusBase::Tick(float DeltaTime)
 
 
 void ABonusBase::ApplyBonus(){
-    
+
 }
 

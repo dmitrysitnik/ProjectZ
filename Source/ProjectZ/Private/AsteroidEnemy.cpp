@@ -46,7 +46,6 @@ void AAsteroidEnemy::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
             //Get the player controller and turn off the input
             APlayerController* playerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
             playerController->DisableInput(playerController);
-            
 		}
 	}
 
