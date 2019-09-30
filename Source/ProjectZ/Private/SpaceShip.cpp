@@ -75,6 +75,8 @@ ASpaceShip::ASpaceShip()
 	GunOffset = FVector(90.f, 0.f, 0.f);
 	FireRate = 0.1f;
 	bCanFire = true;
+    
+    //Additional attributes
     bCanRestart = false;
     bIsDead = false;
 }
