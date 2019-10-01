@@ -8,10 +8,6 @@ WavesController::WavesController(unsigned int mCount)
     mEnemiesInWave = mCount;
 }
 
-WavesController::~WavesController()
-{
-}
-
 
 void WavesController::AddSpawnEnemy(){
     CheckWaveEnd();

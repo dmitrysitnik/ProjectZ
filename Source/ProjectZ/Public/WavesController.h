@@ -13,8 +13,6 @@ public:
     //Constructor of the class
 	WavesController(unsigned int waveCount);
     
-	~WavesController();
-    
     //Count spawned enemies
     void AddSpawnEnemy();
     

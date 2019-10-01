@@ -19,17 +19,14 @@ public:
 
 		virtual void Tick(float deltaSeconds) override;
     
-    
-    
 		UPROPERTY(EditAnywhere, Category = "Look")
-			class UStaticMeshComponent* smEnemy;
-        
+        class UStaticMeshComponent* smEnemy;
     
-    //Calling function on Hit Event
+        //Calling function on Hit Event
 		UFUNCTION()
-			void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+        void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
     
         UFUNCTION()
-            void OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+        void OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
     
 };

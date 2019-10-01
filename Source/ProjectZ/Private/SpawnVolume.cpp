@@ -68,10 +68,8 @@ void ASpawnVolume::Spawn() {
         //Get a pointer to the current world
         UWorld* world = GetWorld();
         
-        
         //Spawn actor
 		AActor* spawnedActor = world->SpawnActor<AActor>(WhatToSpawn[GetRandomIndexOfToSpawn()], GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
-        
         
         AEnemyBase* enemy = Cast<AEnemyBase>(spawnedActor);
         if(enemy && WavesHelper->IsCanSpawn()){
