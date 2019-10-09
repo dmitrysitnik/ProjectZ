@@ -36,7 +36,7 @@ ASpawnVolume::ASpawnVolume()
     WavesHelper = new class WavesController(mEnemiesInWave);
     
     
-    APawn* pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+    APawn* pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 1);
     mPlayer = Cast<ASpaceShip>(pawn);
 }
 
@@ -68,8 +68,8 @@ FVector ASpawnVolume::GetRandomPointInVolume() {
 
 //Method to spawn actors in the volume
 void ASpawnVolume::Spawn() {
-    
-//    mPlayer-
+    //Stop spawn if player is dead
+//    if (mPlayer->IsDead()) return;z
     
     //Check if we can create a new actor in the game
 	if (WhatToSpawn.Last() != nullptr && bCanSpawn && WavesHelper->IsCanSpawn())
