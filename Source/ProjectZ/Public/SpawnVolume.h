@@ -43,6 +43,9 @@ protected:
     UPROPERTY(EditAnywhere, Category = "Spawning")
     unsigned int mEnemiesInWave;
     
+    //Ref to the player ship
+    class ASpaceShip* mPlayer;
+    
     
     /** Gets the one of all actors to spawn  */
     UFUNCTION()

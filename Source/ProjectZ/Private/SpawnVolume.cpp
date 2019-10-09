@@ -6,6 +6,8 @@
 #include "TimerManager.h"
 #include "EnemyBase.h"
 #include "WavesController.h"
+#include "Kismet/GameplayStatics.h"
+#include "SpaceShip.h"
 #include "Kismet/KismetMathLibrary.h"
 
 // Sets default values
@@ -32,6 +34,10 @@ ASpawnVolume::ASpawnVolume()
     
     //Create waveController instance
     WavesHelper = new class WavesController(mEnemiesInWave);
+    
+    
+    APawn* pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+    mPlayer = Cast<ASpaceShip>(pawn);
 }
 
 // Called when the game starts or when spawned
