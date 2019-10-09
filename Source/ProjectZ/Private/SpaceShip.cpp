@@ -198,6 +198,10 @@ void ASpaceShip::Death(){
     //Hide the actor on a level
     SetActorHiddenInGame(true);
     
+    FVector currentLocation = GetActorLocation();
+    currentLocation.Z = -100;
+    SetActorLocation(currentLocation);
+    
 }
 
 
