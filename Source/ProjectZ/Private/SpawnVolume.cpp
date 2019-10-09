@@ -68,6 +68,9 @@ FVector ASpawnVolume::GetRandomPointInVolume() {
 
 //Method to spawn actors in the volume
 void ASpawnVolume::Spawn() {
+    
+//    mPlayer-
+    
     //Check if we can create a new actor in the game
 	if (WhatToSpawn.Last() != nullptr && bCanSpawn && WavesHelper->IsCanSpawn())
 	{
