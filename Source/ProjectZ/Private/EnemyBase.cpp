@@ -4,6 +4,7 @@
 #include "../Public/EnemyBase.h"
 
 
+
 // Sets default values
 AEnemyBase::AEnemyBase()
 {

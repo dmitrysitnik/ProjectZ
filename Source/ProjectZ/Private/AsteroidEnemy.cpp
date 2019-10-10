@@ -7,6 +7,7 @@
 #include "UObject/ConstructorHelpers.h"
 #include "SpaceShip.h"
 #include "Engine/StaticMesh.h"
+#include "Runtime/Engine/Classes/Particles/ParticleSystemComponent.h"
 #include "Components/StaticMeshComponent.h"
 
 
@@ -46,7 +47,12 @@ void AAsteroidEnemy::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
             //Get the player controller and turn off the input
             APlayerController* playerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
             playerController->DisableInput(playerController);
+            if(particleSystem){
+             UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), particleSystem, GetActorLocation());
+            }
+            
             Destroy();
+            
 		}
 	}
 
