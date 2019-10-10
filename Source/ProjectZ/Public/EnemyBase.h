@@ -34,8 +34,11 @@ public:
 	virtual void Tick(float DeltaTime) override;
     
     
-    UPROPERTY(Category = Effects, VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+    UPROPERTY(Category = Effects, EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
     class UParticleSystem* particleSystem;
+    
+    
+    void DestroyEnemy();
 
     
 

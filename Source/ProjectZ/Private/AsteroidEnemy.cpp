@@ -30,6 +30,7 @@ void AAsteroidEnemy::Tick(float deltaSeconds) {
 	/**Make the actor move to the bottom of a screen*/
 	FVector newLocation = GetActorLocation() + GetActorForwardVector()* -1 * deltaSeconds * 600;
 	SetActorLocation(newLocation);
+    
 }
 
 
@@ -47,11 +48,8 @@ void AAsteroidEnemy::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
             //Get the player controller and turn off the input
             APlayerController* playerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
             playerController->DisableInput(playerController);
-            if(particleSystem){
-             UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), particleSystem, GetActorLocation());
-            }
-            
-            Destroy();
+
+            DestroyEnemy();
             
 		}
 	}
@@ -73,7 +71,7 @@ void AAsteroidEnemy::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AA
             //Get the player controller and turn off the input
             APlayerController* playerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
             playerController->DisableInput(playerController);
-            Destroy();
+            DestroyEnemy();
             
         }
     }

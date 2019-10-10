@@ -2,6 +2,7 @@
 
 
 #include "../Public/EnemyBase.h"
+#include "Kismet/GameplayStatics.h"
 
 
 
@@ -27,6 +28,15 @@ void AEnemyBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+
+void AEnemyBase::DestroyEnemy(){
+    if(particleSystem){
+     UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), particleSystem, GetActorLocation());
+    }
+    
+    Destroy();
 }
 
 

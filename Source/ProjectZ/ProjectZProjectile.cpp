@@ -52,7 +52,7 @@ void AProjectZProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor
 		AEnemyBase* enemy = Cast<AEnemyBase>(OtherActor);
 		if (enemy)
 		{
-			enemy->Destroy();
+            enemy->DestroyEnemy();
             Destroy();
 		}
 	}
