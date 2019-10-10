@@ -35,16 +35,6 @@ ASpawnVolume::ASpawnVolume()
     //Create waveController instance
     WavesHelper = new class WavesController(mEnemiesInWave);
     
-    
-    APawn* pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
-    mPlayer = Cast<ASpaceShip>(pawn);
-    
-    
-    GetWorld();
-    
-    if(mPlayer){
-        UE_LOG(LogTemp, Warning, TEXT("mPlayer is a good reference"));
-    }
 }
 
 // Called when the game starts or when spawned
@@ -76,26 +66,12 @@ FVector ASpawnVolume::GetRandomPointInVolume() {
 //Method to spawn actors in the volume
 void ASpawnVolume::Spawn() {
     //Stop spawn if player is dead
-//    if (mPlayer->IsDead()) return;
-    if(mPlayer){
-        UE_LOG(LogTemp, Warning, TEXT("mPlayer is good"));
-    } else {
-        UE_LOG(LogTemp, Warning, TEXT("mPlayer is not good"));
-        
-        
-        
-        
-    }
+    
     
     APawn* pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
-    if(pawn){
-        UE_LOG(LogTemp, Warning, TEXT("pawn is good"));
-    }
-    
     ASpaceShip* ship = Cast<ASpaceShip>(pawn);
-    if(ship){
-        UE_LOG(LogTemp, Warning, TEXT("ship is good"));
-    }
+    
+    if(ship->IsDead()) return;
     
     
     //Check if we can create a new actor in the game

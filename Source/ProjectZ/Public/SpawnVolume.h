@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "SpaceShip.h"
 #include "GameFramework/Actor.h"
 
 
@@ -44,7 +45,7 @@ protected:
     unsigned int mEnemiesInWave;
     
     //Ref to the player ship
-    class ASpaceShip* mPlayer;
+    ASpaceShip* mPlayer;
     
     
     /** Gets the one of all actors to spawn  */
