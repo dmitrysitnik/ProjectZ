@@ -46,6 +46,10 @@ public:
 	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
 		class USoundBase* FireSound;
     
+    
+    UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
+    class USoundBase* mExplosion;
+    
 
 	// Begin Actor Interface
 	virtual void Tick(float DeltaSeconds) override;
