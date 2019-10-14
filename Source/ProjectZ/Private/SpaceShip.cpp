@@ -188,17 +188,23 @@ void ASpaceShip::Death(){
     if(bIsGod) return;
     
     
+    
     //Set the flags of a player state
     //Now can restart and cannot fire
     bCanRestart  = true;
     bIsDead = true;
     bCanFire = false;
     
+    FVector currentLocation = GetActorLocation();
+    if(mExplosion){
+        UGameplayStatics::PlaySoundAtLocation(this, mExplosion, currentLocation);
+    }
     
     //Hide the actor on a level
     SetActorHiddenInGame(true);
     
-    FVector currentLocation = GetActorLocation();
+    
+    //Move by Z axis
     currentLocation.Z = -100;
     SetActorLocation(currentLocation);
     
