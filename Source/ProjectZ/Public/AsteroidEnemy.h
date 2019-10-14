@@ -23,7 +23,7 @@ public:
         class UStaticMeshComponent* smEnemy;
     
         UPROPERTY(EditAnywhere, Category = "Sounds")
-    class SoundBase* explosionSound;
+    class USoundBase* explosionSound;
     
         //Calling function on Hit Event
 		UFUNCTION()
