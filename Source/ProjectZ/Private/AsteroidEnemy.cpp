@@ -7,7 +7,7 @@
 #include "UObject/ConstructorHelpers.h"
 #include "SpaceShip.h"
 #include "Engine/StaticMesh.h"
-#include "Sound/SoundBase.h"
+
 #include "Runtime/Engine/Classes/Particles/ParticleSystemComponent.h"
 #include "Components/StaticMeshComponent.h"
 

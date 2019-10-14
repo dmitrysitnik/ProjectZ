@@ -2,6 +2,7 @@
 
 
 #include "../Public/EnemyBase.h"
+#include "Sound/SoundBase.h"
 #include "Kismet/GameplayStatics.h"
 
 
@@ -34,6 +35,10 @@ void AEnemyBase::Tick(float DeltaTime)
 void AEnemyBase::DestroyEnemy(){
     if(particleSystem){
      UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), particleSystem, GetActorLocation());
+    }
+    
+    if(mExplosionSound) {
+        UGameplayStatics::PlaySoundAtLocation(this, mExplosionSound, GetActorLocation());
     }
     
     Destroy();

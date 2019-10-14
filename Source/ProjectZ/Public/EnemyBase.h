@@ -37,6 +37,9 @@ public:
     UPROPERTY(Category = Effects, EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
     class UParticleSystem* particleSystem;
     
+    UPROPERTY(EditAnywhere, Category = "Sounds", meta = (AllowPrivateAccess = "true"))
+    class USoundBase* mExplosionSound;
+    
     
     void DestroyEnemy();
 

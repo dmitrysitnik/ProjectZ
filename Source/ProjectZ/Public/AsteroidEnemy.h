@@ -22,8 +22,7 @@ public:
 		UPROPERTY(EditAnywhere, Category = "Look")
         class UStaticMeshComponent* smEnemy;
     
-        UPROPERTY(EditAnywhere, Category = "Sounds")
-    class USoundBase* mExplosionSound;
+        
     
         //Calling function on Hit Event
 		UFUNCTION()
