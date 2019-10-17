@@ -29,7 +29,7 @@ void AExplosionBonus::MakeExplosion(){
             AEnemyBase* enemy = Cast<AEnemyBase>(currentActor);
             if(enemy){
                 //Destroy the actor
-                enemy->Destroy();
+                enemy->DestroyEnemy();
             }
             
         }
@@ -41,11 +41,8 @@ void AExplosionBonus::MakeExplosion(){
 
 
 void AExplosionBonus::ApplyBonus(){
-    
     //Create an explosion in the sphere raduis
     MakeExplosion();
-    
-    
 }
 
 
