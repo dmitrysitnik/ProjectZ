@@ -38,8 +38,6 @@ void AExplosionBonus::MakeExplosion(){
 }
 
 
-
-
 void AExplosionBonus::ApplyBonus(){
     //Create an explosion in the sphere raduis
     MakeExplosion();
