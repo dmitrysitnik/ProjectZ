@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "BonusBase.h"
-#include "Components/SphereComponent.h" 
+#include "Components/SphereComponent.h"
 #include "ExplosionBonus.generated.h"
 
 /**
@@ -21,7 +21,7 @@ public:
     AExplosionBonus() : ABonusBase(){
         //Add function to process overlapping
         SmBonus->OnComponentBeginOverlap.AddDynamic(this, &AExplosionBonus::OnBeginOverlap);
-        SphereComponent->SetSphereRadius(100.0f);
+        SphereComponent->SetSphereRadius(80.0f);
     };
     
     
