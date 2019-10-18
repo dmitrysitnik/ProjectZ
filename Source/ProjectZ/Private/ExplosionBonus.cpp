@@ -18,7 +18,7 @@ void AExplosionBonus::MakeExplosion(){
     //    Check all overlapped actors
     for (int current = 0; current < overlappedActors.Num(); current++) {
         
-        //Get the current actor from index
+        //Get the current actor
         AActor* currentActor = overlappedActors[current];
         
         //Check if the actor is not null
