@@ -21,7 +21,7 @@ public:
     AExplosionBonus() : ABonusBase(){
         //Add function to process overlapping
         SmBonus->OnComponentBeginOverlap.AddDynamic(this, &AExplosionBonus::OnBeginOverlap);
-        SphereComponent->SetSphereRadius(80.0f);
+        SphereComponent->SetSphereRadius(50.0f);
     };
     
     
