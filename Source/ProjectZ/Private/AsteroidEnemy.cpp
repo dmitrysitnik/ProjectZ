@@ -51,7 +51,6 @@ void AAsteroidEnemy::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
             playerController->DisableInput(playerController);
 
             DestroyEnemy();
-            
 		}
 	}
 

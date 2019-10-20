@@ -34,6 +34,9 @@ public:
     class USphereComponent* SphereComponent;
     
     
+    //Particle component to visualize apply
+    UPROPERTY(Category = Effects, VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+    class UParticleSystem* ParticleSystem;
     
     
     //Static mesh component to make differnt shape bonuses
