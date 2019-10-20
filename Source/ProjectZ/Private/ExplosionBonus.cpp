@@ -10,6 +10,10 @@
 
 void AExplosionBonus::MakeExplosion(){
     
+    //TO-DO: play effect of the explosion
+    if(ParticleSystem){
+        
+    }
     
     //Get the overlapping actors from sphere component
     TArray<AActor*> overlappedActors;
