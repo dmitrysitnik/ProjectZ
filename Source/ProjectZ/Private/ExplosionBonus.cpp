@@ -4,6 +4,7 @@
 #include "ExplosionBonus.h"
 #include "Components/SphereComponent.h"
 #include "SpaceShip.h"
+#include "Kismet/GameplayStatics.h"
 #include "EnemyBase.h"
 
 
@@ -12,7 +13,7 @@ void AExplosionBonus::MakeExplosion(){
     
     //TO-DO: play effect of the explosion
     if(ParticleSystem){
-        
+        UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ParticleSystem, GetActorLocation());
     }
     
     //Get the overlapping actors from sphere component

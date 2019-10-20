@@ -72,7 +72,6 @@ void AAsteroidEnemy::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AA
             APlayerController* playerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
             playerController->DisableInput(playerController);
             DestroyEnemy();
-            
         }
     }
     
