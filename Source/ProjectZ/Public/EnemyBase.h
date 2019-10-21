@@ -15,12 +15,9 @@ public:
 	// Sets default values for this actor's properties
 	AEnemyBase();
 
-	
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-    
     
     //Ref to class that will be spawned by spawnVolume
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
@@ -40,9 +37,7 @@ public:
     UPROPERTY(EditAnywhere, Category = "Sounds", meta = (AllowPrivateAccess = "true"))
     class USoundBase* mExplosionSound;
     
-    
+    //Function to destroy the enemy and play effects and others
     void DestroyEnemy();
-
-    
 
 };
