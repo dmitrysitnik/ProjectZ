@@ -35,7 +35,7 @@ public:
     
     
     //Particle component to visualize apply
-    UPROPERTY(Category = Effects, VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+    UPROPERTY(Category = Effects, EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
     class UParticleSystem* ParticleSystem;
     
     
