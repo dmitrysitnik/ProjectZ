@@ -17,13 +17,18 @@ class PROJECTZ_API AExplosionBonus : public ABonusBase
     
     
 public:
+    
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExplosionControl")
+    float SphereRadius = 10.0f;
+    
+    
     /** Constructor*/
     AExplosionBonus() : ABonusBase(){
         //Add function to process overlapping
         SmBonus->OnComponentBeginOverlap.AddDynamic(this, &AExplosionBonus::OnBeginOverlap);
         
         //Set radius of an explosion
-        SphereComponent->SetSphereRadius(50.0f);
+        SphereComponent->SetSphereRadius(SphereRadius);
     };
     
     

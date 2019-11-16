@@ -11,7 +11,7 @@
 
 void AExplosionBonus::MakeExplosion(){
     
-    //TO-DO: play effect of the explosion
+    // play effect of the explosion
     if(ParticleSystem){
         UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ParticleSystem, GetActorLocation());
     }
@@ -28,7 +28,6 @@ void AExplosionBonus::MakeExplosion(){
         
         //Check if the actor is not null
         if(currentActor){
-            
             
             //Try convert the actor to an enemy actor
             AEnemyBase* enemy = Cast<AEnemyBase>(currentActor);
