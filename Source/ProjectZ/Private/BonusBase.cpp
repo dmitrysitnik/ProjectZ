@@ -6,6 +6,8 @@
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Components/SceneComponent.h"
 
 
 // Sets default values
@@ -15,13 +17,17 @@ ABonusBase::ABonusBase()
 	PrimaryActorTick.bCanEverTick = true;
     
     static ConstructorHelpers::FObjectFinder<UStaticMesh> BonusMesh(TEXT("/Game/Geometry/Meshes/Bonus_SM.Bonus_SM"));
-    
-//    static ConstructorsHelpers::FObjectFinder<
+    static ConstructorHelpers::FObjectFinder<USkeletalMesh> BonusSkelet(TEXT("/Game/Geometry/Meshes/bonus-model.bonus-model"));
     
     //Create the mesh component
     SmBonus = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BonusMesh"));
-    RootComponent = SmBonus;
+    scene = CreateDefaultSubobject<USceneComponent>(TEXT("SkeletMesh"));
+    skMeshBonus = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SkeletalMesh"));
+    
+    
+    RootComponent = scene;
     SmBonus->SetStaticMesh(BonusMesh.Object);
+    skMeshBonus->SetSkeletalMesh(BonusSkelet.Object);
     
     
     SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("Sphere0"));

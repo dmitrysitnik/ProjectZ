@@ -52,7 +52,12 @@ public:
     
     //The skeletal mesh
     UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-    class USkeletalMesh* skMeshBonus;
+    class USkeletalMeshComponent* skMeshBonus;
+    
+    
+    
+    UPROPERTY()
+    class USceneComponent* scene;
     
     
 
