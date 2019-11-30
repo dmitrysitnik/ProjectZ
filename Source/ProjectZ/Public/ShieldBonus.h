@@ -17,7 +17,7 @@ class PROJECTZ_API AShieldBonus : public ABonusBase
 public:
     AShieldBonus() : ABonusBase(){
         //Add function to process overlapping 
-        SmBonus->OnComponentBeginOverlap.AddDynamic(this, &AShieldBonus::OnBeginOverlap);
+//        SmBonus->OnComponentBeginOverlap.AddDynamic(this, &AShieldBonus::OnBeginOverlap);
         skMeshBonus->OnComponentBeginOverlap.AddDynamic(this, &AShieldBonus::OnBeginOverlap);
         
         mDuration = 5.0f;

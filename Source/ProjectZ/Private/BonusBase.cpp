@@ -20,13 +20,14 @@ ABonusBase::ABonusBase()
     static ConstructorHelpers::FObjectFinder<USkeletalMesh> BonusSkelet(TEXT("/Game/Geometry/Meshes/bonus-model.bonus-model"));
     
     //Create the mesh component
-    SmBonus = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BonusMesh"));
-    scene = CreateDefaultSubobject<USceneComponent>(TEXT("SkeletMesh"));
+//    SmBonus = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BonusMesh"));
+//    scene = CreateDefaultSubobject<USceneComponent>(TEXT("SkeletMesh"));
     skMeshBonus = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SkeletalMesh"));
     
     
-    RootComponent = scene;
-    SmBonus->SetStaticMesh(BonusMesh.Object);
+    RootComponent = skMeshBonus;
+    
+//    SmBonus->SetStaticMesh(BonusMesh.Object);
     skMeshBonus->SetSkeletalMesh(BonusSkelet.Object);
     
     
