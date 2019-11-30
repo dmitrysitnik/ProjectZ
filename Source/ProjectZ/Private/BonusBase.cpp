@@ -19,7 +19,7 @@ ABonusBase::ABonusBase()
     
     
     static ConstructorHelpers::FObjectFinder<UStaticMesh> BonusMesh(TEXT("/Game/Geometry/Meshes/Bonus_SM.Bonus_SM"));
-    static ConstructorHelpers::FObjectFinder<USkeletalMesh> BonusSkelet(TEXT("/Game/Geometry/Meshes/bonus-model.bonus-model"));
+    static ConstructorHelpers::FObjectFinder<USkeletalMesh> BonusSkelet(TEXT("/Game/Geometry/Meshes/SK_Bonus.SK_Bonus"));
     
     //Create the mesh component
 //    SmBonus = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BonusMesh"));

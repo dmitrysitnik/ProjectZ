@@ -44,6 +44,8 @@ void AExplosionBonus::MakeExplosion(){
 
 void AExplosionBonus::ApplyBonus(){
     
+    Super::ApplyBonus();
+    
 //    //Play sound
 //    if (mBonusSound) {
 //        UGameplayStatics::PlaySoundAtLocation(this, mBonusSound, GetActorLocation());
