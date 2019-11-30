@@ -32,6 +32,10 @@ ASpawnVolume::ASpawnVolume()
     //Initialize enemies pause time in seconds
     SpawnEnemiesPause = 15.0f;
     
+    bCanSpawnPlanet = true;
+    
+    PlanetSpawnRate = 3.0f;
+    
     //Create waveController instance
     WavesHelper = new class WavesController(mEnemiesInWave);
     
@@ -80,11 +84,7 @@ void ASpawnVolume::Spawn() {
         //Get a pointer to the current world
         UWorld* world = GetWorld();
         
-        if(WavesHelper->GetSpawnedEnemies() % 15 == 0){
-            FVector newPlanetPosition = GetRandomPointInVolume();
-            newPlanetPosition.Z = -300;	
-         AActor* spawnedPlanetActor = world->SpawnActor<AActor>(PlanetsToSpawn[0], newPlanetPosition, FRotator(0.0f, 0.0f ,0.0f));
-        }
+        SpawnPlanet();
         
         //Spawn actor
 		AActor* spawnedActor = world->SpawnActor<AActor>(WhatToSpawn[GetRandomIndexOfToSpawn()], GetRandomPointInVolume(), FRotator(0.0f, 0.0f ,0.0f));
@@ -125,4 +125,22 @@ int32 ASpawnVolume::GetRandomIndexOfToSpawn(){
 //Functon that will be called after timer has expired
 void ASpawnVolume::WavePauseTimerExpired(){
     WavesHelper->SetCanSpawn(true);
+}
+
+
+
+void ASpawnVolume::SpawnPlanet(){
+    if(!bCanSpawnPlanet) return;
+    
+    FVector newPlanetPosition = GetRandomPointInVolume();
+    newPlanetPosition.Z = -300;
+    AActor* spawnedPlanetActor = GetWorld()->SpawnActor<AActor>(PlanetsToSpawn[0], newPlanetPosition, FRotator(0.0f, 0.0f ,0.0f));
+    
+    GetWorld()->GetTimerManager().SetTimer(TimerHandle_PlanetTimer, this, &ASpawnVolume::PlanetTimerExpired, PlanetSpawnRate);
+    bCanSpawnPlanet = false;
+}
+
+
+void ASpawnVolume::PlanetTimerExpired(){
+    bCanSpawnPlanet = true;
 }

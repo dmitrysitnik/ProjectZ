@@ -51,6 +51,11 @@ protected:
     UPROPERTY(EditAnywhere, Category = "Spawning")
     unsigned int mEnemiesInWave;
     
+    
+    
+    UPROPERTY(EditAnywhere, Category = "Spawning")
+    float PlanetSpawnRate;
+    
     //Ref to the player ship
     ASpaceShip* mPlayer;
     
@@ -86,6 +91,14 @@ public:
     
     //Timer to handle waves spawn process
     FTimerHandle TimerHandle_WavePauseTimer;
+    
+    
+    FTimerHandle TimerHandle_PlanetTimer;
+    
+    void PlanetTimerExpired();
+    
+    
+    void SpawnPlanet();
 
 
 private:
@@ -94,5 +107,8 @@ private:
     
     //Can spawn flag
     bool bCanSpawn;
+    
+    //Planet spwan flag
+    bool bCanSpawnPlanet;
 
 };

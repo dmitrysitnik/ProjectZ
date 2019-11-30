@@ -7,6 +7,8 @@
 
 void AShieldBonus::ApplyBonus(){
     
+    Super::ApplyBonus();
+    
     if(mSpaceShip){
         mSpaceShip->SetInvulnerable(true, mDuration);
     }
