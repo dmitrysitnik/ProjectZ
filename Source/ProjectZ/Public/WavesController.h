@@ -23,6 +23,9 @@ public:
     FORCEINLINE void SetCanSpawn(bool bSpawn){ bCanSpawn = bSpawn; };
     
     
+    FORCEINLINE unsigned int GetSpawnedEnemies() const { return mCurrentSpawned; };
+    
+    
 protected:
     
     //Properties for control

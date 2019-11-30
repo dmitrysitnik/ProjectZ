@@ -32,6 +32,10 @@ public:
     };
     
     
+    // Called every frame
+    virtual void Tick(float DeltaTime) override;
+    
+    
     /** Make an explosion in the sphere area. Destroy all enemies actors in the area*/
     void MakeExplosion();
 	

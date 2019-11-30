@@ -10,6 +10,7 @@
 
 #include "Runtime/Engine/Classes/Particles/ParticleSystemComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Kismet/KismetMathLibrary.h"
 
 
 AAsteroidEnemy::AAsteroidEnemy() {
@@ -22,6 +23,8 @@ AAsteroidEnemy::AAsteroidEnemy() {
 	smEnemy->SetStaticMesh(Mesh.Object);
 	smEnemy->OnComponentBeginOverlap.AddDynamic(this, &AAsteroidEnemy::OnBeginOverlap);
 	smEnemy->OnComponentHit.AddDynamic(this, &AAsteroidEnemy::OnHit);
+    
+    
 }
 
 void AAsteroidEnemy::Tick(float deltaSeconds) {

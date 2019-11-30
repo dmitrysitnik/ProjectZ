@@ -27,6 +27,13 @@ public:
     
     
     
+    
+    UPROPERTY(EditAnywhere, Category = "Spawning")
+    TArray<TSubclassOf<class AActor>> PlanetsToSpawn;
+
+    
+    
+    
 
 protected:
 	// Called when the game starts or when spawned

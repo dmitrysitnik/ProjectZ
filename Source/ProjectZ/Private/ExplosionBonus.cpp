@@ -43,6 +43,12 @@ void AExplosionBonus::MakeExplosion(){
 
 
 void AExplosionBonus::ApplyBonus(){
+    
+    //Play sound
+    if (mBonusSound) {
+        UGameplayStatics::PlaySoundAtLocation(this, mBonusSound, GetActorLocation());
+    }
+    
     //Create an explosion in the sphere raduis
     MakeExplosion();
 }
@@ -61,5 +67,11 @@ void AExplosionBonus::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, A
         }
     }
    
+}
+
+
+void AExplosionBonus::Tick(float DeltaTime){
+    Super::Tick(DeltaTime);
+    SphereComponent->SetSphereRadius(SphereRadius);
 }
 

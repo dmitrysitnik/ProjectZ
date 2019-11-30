@@ -50,6 +50,7 @@ AProjectZPawn::AProjectZPawn()
 	GunOffset = FVector(90.f, 0.f, 0.f);
 	FireRate = 0.1f;
 	bCanFire = true;
+    
 }
 
 void AProjectZPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)

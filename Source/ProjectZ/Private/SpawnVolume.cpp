@@ -80,8 +80,14 @@ void ASpawnVolume::Spawn() {
         //Get a pointer to the current world
         UWorld* world = GetWorld();
         
+        if(WavesHelper->GetSpawnedEnemies() % 15 == 0){
+            FVector newPlanetPosition = GetRandomPointInVolume();
+            newPlanetPosition.Z = -300;	
+         AActor* spawnedPlanetActor = world->SpawnActor<AActor>(PlanetsToSpawn[0], newPlanetPosition, FRotator(0.0f, 0.0f ,0.0f));
+        }
+        
         //Spawn actor
-		AActor* spawnedActor = world->SpawnActor<AActor>(WhatToSpawn[GetRandomIndexOfToSpawn()], GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
+		AActor* spawnedActor = world->SpawnActor<AActor>(WhatToSpawn[GetRandomIndexOfToSpawn()], GetRandomPointInVolume(), FRotator(0.0f, 0.0f ,0.0f));
         
         AEnemyBase* enemy = Cast<AEnemyBase>(spawnedActor);
         if(enemy && WavesHelper->IsCanSpawn()){
