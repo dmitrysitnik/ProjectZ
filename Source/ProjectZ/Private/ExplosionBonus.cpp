@@ -44,10 +44,10 @@ void AExplosionBonus::MakeExplosion(){
 
 void AExplosionBonus::ApplyBonus(){
     
-    //Play sound
-    if (mBonusSound) {
-        UGameplayStatics::PlaySoundAtLocation(this, mBonusSound, GetActorLocation());
-    }
+//    //Play sound
+//    if (mBonusSound) {
+//        UGameplayStatics::PlaySoundAtLocation(this, mBonusSound, GetActorLocation());
+//    }
     
     //Create an explosion in the sphere raduis
     MakeExplosion();
