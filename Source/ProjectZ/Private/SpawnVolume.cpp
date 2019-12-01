@@ -32,7 +32,7 @@ ASpawnVolume::ASpawnVolume()
     //Initialize enemies pause time in seconds
     SpawnEnemiesPause = 15.0f;
     
-    bCanSpawnPlanet = true;
+    bCanSpawnPlanet = true; 
     
     PlanetSpawnRate = 3.0f;
     
