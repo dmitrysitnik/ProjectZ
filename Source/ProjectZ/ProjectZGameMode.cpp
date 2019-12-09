@@ -17,4 +17,11 @@ void AProjectZGameMode::RestartLevel(UObject* world, FName levelName){
 
 
 
+void AProjectZGameMode::SetNewState(int state){
+    CurrentState = state;
+}
+
+
+
+
 

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "../Public/MyUserDefinedEnum.h"
 #include "ProjectZGameMode.generated.h"
 
 UCLASS(MinimalAPI)
@@ -16,6 +17,17 @@ public:
     
     /** Method to Restart a level*/
     void RestartLevel(UObject* world, FName levelName);
+    
+        UFUNCTION(BlueprintCallable)
+        void SetNewState(int state);
+    
+    
+    UFUNCTION(BlueprintCallable)
+    FORCEINLINE int GetState() const { return CurrentState; } ;
+        
+        
+    private:
+        int CurrentState = UMyUserDefinedEnum::WaveState::Empty;
 };
 
 
