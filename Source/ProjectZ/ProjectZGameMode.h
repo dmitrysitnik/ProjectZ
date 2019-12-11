@@ -28,6 +28,13 @@ public:
         
     private:
         int CurrentState = UMyUserDefinedEnum::WaveState::Empty;
+    
+    
+    float StateTime = 2.5f;
+    
+    void StateTimerExpired();
+    
+    FTimerHandle StateTimerHandle;
 };
 
 

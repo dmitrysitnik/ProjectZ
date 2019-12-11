@@ -7,6 +7,8 @@
 #include "EnemyBase.h"
 #include "WavesController.h"
 #include "Kismet/GameplayStatics.h"
+#include "ProjectZGameMode.h"
+#include "MyUserDefinedEnum.h"
 #include "SpaceShip.h"
 #include "Kismet/KismetMathLibrary.h"
 
@@ -69,6 +71,8 @@ FVector ASpawnVolume::GetRandomPointInVolume() {
 
 //Method to spawn actors in the volume
 void ASpawnVolume::Spawn() {
+    
+    AProjectZGameMode* gameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
     //Stop spawn if player is dead
     
     
@@ -77,6 +81,9 @@ void ASpawnVolume::Spawn() {
     
     if(ship->IsDead()) return;
     
+    if(WavesHelper->GetSpawnedEnemies() == 0 && WavesHelper->IsCanSpawn()){
+        gameMode->SetNewState(UMyUserDefinedEnum::Wave);
+    }
     
     //Check if we can create a new actor in the game
 	if (WhatToSpawn.Last() != nullptr && bCanSpawn && WavesHelper->IsCanSpawn())
@@ -92,6 +99,10 @@ void ASpawnVolume::Spawn() {
         AEnemyBase* enemy = Cast<AEnemyBase>(spawnedActor);
         if(enemy && WavesHelper->IsCanSpawn()){
             WavesHelper->AddSpawnEnemy();
+        }
+        
+        if(gameMode && !WavesHelper->IsCanSpawn()){
+            gameMode->SetNewState(UMyUserDefinedEnum::WaveEnd);
         }
         
         //Set bCanSpawn to false and invoke the SpawnTimer

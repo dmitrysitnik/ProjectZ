@@ -18,6 +18,7 @@ class PROJECTZ_API UMyUserDefinedEnum : public UUserDefinedEnum
     enum WaveState{
         Empty,
         Wave,
+        WaveEnd,
         Boss
     };
     
