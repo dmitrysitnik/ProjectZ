@@ -144,7 +144,9 @@ void ASpawnVolume::SpawnPlanet(){
     if(!bCanSpawnPlanet) return;
     
     FVector newPlanetPosition = GetRandomPointInVolume();
-    newPlanetPosition.Z = -800;
+    
+    //TODO: calculate the Z distance
+    newPlanetPosition.Z = -300;
     AActor* spawnedPlanetActor = GetWorld()->SpawnActor<AActor>(PlanetsToSpawn[0], newPlanetPosition, FRotator(0.0f, 0.0f ,0.0f));
     
     
