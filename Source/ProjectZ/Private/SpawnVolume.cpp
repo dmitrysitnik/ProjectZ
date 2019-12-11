@@ -144,8 +144,12 @@ void ASpawnVolume::SpawnPlanet(){
     if(!bCanSpawnPlanet) return;
     
     FVector newPlanetPosition = GetRandomPointInVolume();
-    newPlanetPosition.Z = -300;
+    newPlanetPosition.Z = -800;
     AActor* spawnedPlanetActor = GetWorld()->SpawnActor<AActor>(PlanetsToSpawn[0], newPlanetPosition, FRotator(0.0f, 0.0f ,0.0f));
+    
+    
+    float planetXYZ = UKismetMathLibrary::RandomFloatInRange(3.0f, 8.0f);
+    spawnedPlanetActor->SetActorScale3D(FVector(planetXYZ, planetXYZ, planetXYZ));
     
     GetWorld()->GetTimerManager().SetTimer(TimerHandle_PlanetTimer, this, &ASpawnVolume::PlanetTimerExpired, PlanetSpawnRate);
     bCanSpawnPlanet = false;
