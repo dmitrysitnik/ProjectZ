@@ -139,7 +139,7 @@ void ASpawnVolume::WavePauseTimerExpired(){
 }
 
 
-
+//Spawn a planet
 void ASpawnVolume::SpawnPlanet(){
     if(!bCanSpawnPlanet) return;
     
