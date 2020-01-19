@@ -8,7 +8,7 @@
 #include "WavesController.h"
 #include "Kismet/GameplayStatics.h"
 #include "ProjectZGameMode.h"
-#include "MyUserDefinedEnum.h"
+#include "MyEnum.h"
 #include "SpaceShip.h"
 #include "Kismet/KismetMathLibrary.h"
 
@@ -82,7 +82,7 @@ void ASpawnVolume::Spawn() {
     if(ship->IsDead()) return;
     
     if(WavesHelper->GetSpawnedEnemies() == 0 && WavesHelper->IsCanSpawn()){
-        gameMode->SetNewState(UMyUserDefinedEnum::Wave);
+        gameMode->SetNewState(UMyEnum::Wave);
     }
     
     //Check if we can create a new actor in the game
@@ -102,7 +102,7 @@ void ASpawnVolume::Spawn() {
         }
         
         if(gameMode && !WavesHelper->IsCanSpawn()){
-            gameMode->SetNewState(UMyUserDefinedEnum::WaveEnd);
+            gameMode->SetNewState(UMyEnum::WaveEnd);
         }
         
         //Set bCanSpawn to false and invoke the SpawnTimer

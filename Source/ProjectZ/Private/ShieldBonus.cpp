@@ -3,7 +3,7 @@
 
 #include "ShieldBonus.h"
 #include "SpaceShip.h"
-#include "../Public/MyUserDefinedEnum.h"
+#include "../Public/MyEnum.h"
 #include "ProjectZGameMode.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -15,7 +15,7 @@ void AShieldBonus::ApplyBonus(){
     
     AProjectZGameMode* gameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
     if(gameMode){
-        gameMode->SetNewState(UMyUserDefinedEnum::Boss);
+        gameMode->SetNewState(UMyEnum::Boss);
     }
     
     if(mSpaceShip){

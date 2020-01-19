@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Engine/UserDefinedEnum.h"
-#include "MyUserDefinedEnum.generated.h"
+#include "MyEnum.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class PROJECTZ_API UMyUserDefinedEnum : public UUserDefinedEnum
+class PROJECTZ_API UMyEnum : public UUserDefinedEnum
 {
 	GENERATED_BODY()
 	

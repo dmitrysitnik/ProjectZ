@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "../Public/MyUserDefinedEnum.h"
+#include "../Public/MyEnum.h"
 #include "ProjectZGameMode.generated.h"
 
 UCLASS(MinimalAPI)
@@ -27,7 +27,7 @@ public:
         
         
     private:
-        int CurrentState = UMyUserDefinedEnum::WaveState::Empty;
+        int CurrentState = UMyEnum::WaveState::Empty;
     
     
     float StateTime = 2.5f;

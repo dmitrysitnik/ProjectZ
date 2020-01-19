@@ -6,7 +6,7 @@
 #include "SpaceShip.h"
 #include "Kismet/GameplayStatics.h"
 #include "EnemyBase.h"
-#include "../Public/MyUserDefinedEnum.h"
+#include "../Public/MyEnum.h"
 #include "ProjectZGameMode.h"
 
 
@@ -58,7 +58,7 @@ void AExplosionBonus::ApplyBonus(){
     
     AProjectZGameMode* gameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
     if(gameMode){
-        gameMode->SetNewState(UMyUserDefinedEnum::Empty);
+        gameMode->SetNewState(UMyEnum::Empty);
     }
 }
 

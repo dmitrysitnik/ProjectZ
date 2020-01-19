@@ -3,7 +3,7 @@
 #include "ProjectZGameMode.h"
 #include "Kismet/GameplayStatics.h"
 #include "TimerManager.h"
-#include "../Public/MyUserDefinedEnum.h"
+#include "../Public/MyEnum.h"
 #include "ProjectZPawn.h"
 
 AProjectZGameMode::AProjectZGameMode()
@@ -24,7 +24,7 @@ void AProjectZGameMode::SetNewState(int state){
 
 
 void AProjectZGameMode::StateTimerExpired(){
-    if(CurrentState != UMyUserDefinedEnum::Empty) SetNewState(UMyUserDefinedEnum::Empty);
+    if(CurrentState != UMyEnum::Empty) SetNewState(UMyEnum::Empty);
 }
 
 
