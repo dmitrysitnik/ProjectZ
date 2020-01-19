@@ -3,6 +3,7 @@
 
 #include "../Public/EnemyBase.h"
 #include "Sound/SoundBase.h"
+#include "../ProjectZGameMode.h"
 #include "Kismet/GameplayStatics.h"
 
 
@@ -13,7 +14,7 @@ AEnemyBase::AEnemyBase()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	
+    mGameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
 
 }
 
@@ -33,6 +34,7 @@ void AEnemyBase::Tick(float DeltaTime)
 
 
 void AEnemyBase::DestroyEnemy(){
+    
     if(particleSystem){
      UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), particleSystem, GetActorLocation());
     }
@@ -42,6 +44,11 @@ void AEnemyBase::DestroyEnemy(){
     }
     
     Destroy();
+    
+    
+    //Add award points
+    mGameMode->AddPoints(mPointsAward);
+    
 }
 
 

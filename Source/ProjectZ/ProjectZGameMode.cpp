@@ -28,5 +28,9 @@ void AProjectZGameMode::StateTimerExpired(){
 }
 
 
+void AProjectZGameMode::AddPoints(int points){
+    mPoints += points;
+}
+
 
 

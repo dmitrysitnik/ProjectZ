@@ -24,10 +24,20 @@ public:
     
     UFUNCTION(BlueprintCallable)
     FORCEINLINE int GetState() const { return CurrentState; } ;
+    
+    UFUNCTION(BlueprintCallable)
+    FORCEINLINE int GetPoints() const { return mPoints; };
+    
+    UFUNCTION(BlueprintCallable)
+    void AddPoints(int points);
         
         
     private:
-        int CurrentState = UMyEnum::WaveState::Empty;
+    
+    int CurrentState = UMyEnum::WaveState::Empty;
+    
+    //Current points in the session
+    int mPoints = 0;
     
     
     float StateTime = 2.5f;

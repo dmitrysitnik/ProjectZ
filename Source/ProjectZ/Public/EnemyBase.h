@@ -25,6 +25,11 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, Category = "Movement")
 	class UMovementComponent* movement;
+    
+    class AProjectZGameMode* mGameMode;
+    
+    //The award for the enemy destroy
+    int mPointsAward = 20;
 
 public:	
 	// Called every frame
