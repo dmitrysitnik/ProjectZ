@@ -160,14 +160,17 @@ void ASpawnVolume::SpawnPlanet(){
     int32 planetIndex = UKismetMathLibrary::RandomIntegerInRange(0, maxPlanets);
                          
                     
-    
+    //Planet should be in the scene's back, like on distance from ship and other
     newPlanetPosition.Z = -1000;
+    //TO-DO: Get random FRotator
     AActor* spawnedPlanetActor = GetWorld()->SpawnActor<AActor>(PlanetsToSpawn[planetIndex], newPlanetPosition, FRotator(0.0f, 0.0f ,0.0f));
     
-    
+    //Get a scale for XYZ axies
     float planetXYZ = UKismetMathLibrary::RandomFloatInRange(3.0f, 8.0f);
     spawnedPlanetActor->SetActorScale3D(FVector(planetXYZ, planetXYZ, planetXYZ));
     
+    
+    //Run Planet's timer
     GetWorld()->GetTimerManager().SetTimer(TimerHandle_PlanetTimer, this, &ASpawnVolume::PlanetTimerExpired, PlanetSpawnRate);
     bCanSpawnPlanet = false;
 }
