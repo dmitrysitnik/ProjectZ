@@ -73,7 +73,6 @@ FVector ASpawnVolume::GetRandomPointInVolume() {
 void ASpawnVolume::Spawn() {
     
     AProjectZGameMode* gameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
-    //Stop spawn if player is dead
     
     
     APawn* pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
@@ -83,6 +82,8 @@ void ASpawnVolume::Spawn() {
     SpawnPlanet();
     
     
+    
+    //Stop spawn if player is dead
     if(ship->IsDead()) return;
     
     if(WavesHelper->GetSpawnedEnemies() == 0 && WavesHelper->IsCanSpawn()){
