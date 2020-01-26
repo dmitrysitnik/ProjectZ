@@ -79,6 +79,10 @@ void ASpawnVolume::Spawn() {
     APawn* pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
     ASpaceShip* ship = Cast<ASpaceShip>(pawn);
     
+    //Spawn decorative planets
+    SpawnPlanet();
+    
+    
     if(ship->IsDead()) return;
     
     if(WavesHelper->GetSpawnedEnemies() == 0 && WavesHelper->IsCanSpawn()){
@@ -91,7 +95,7 @@ void ASpawnVolume::Spawn() {
         //Get a pointer to the current world
         UWorld* world = GetWorld();
         
-        SpawnPlanet();
+        
         
         //Spawn actor
 		AActor* spawnedActor = world->SpawnActor<AActor>(WhatToSpawn[GetRandomIndexOfToSpawn()], GetRandomPointInVolume(), FRotator(0.0f, 0.0f ,0.0f));
@@ -143,11 +147,18 @@ void ASpawnVolume::WavePauseTimerExpired(){
 void ASpawnVolume::SpawnPlanet(){
     if(!bCanSpawnPlanet) return;
     
+    //Get max index of the Planet array to variable
+    const int32 maxPlanets = PlanetsToSpawn.Num() - 1;
+    
     FVector newPlanetPosition = GetRandomPointInVolume();
     
-    //TODO: calculate the Z distance
-    newPlanetPosition.Z = -300;
-    AActor* spawnedPlanetActor = GetWorld()->SpawnActor<AActor>(PlanetsToSpawn[0], newPlanetPosition, FRotator(0.0f, 0.0f ,0.0f));
+    //Get random planet index to spawn
+    int32 planetIndex = UKismetMathLibrary::RandomIntegerInRange(0, maxPlanets);
+                         
+                    
+    
+    newPlanetPosition.Z = -1000;
+    AActor* spawnedPlanetActor = GetWorld()->SpawnActor<AActor>(PlanetsToSpawn[planetIndex], newPlanetPosition, FRotator(0.0f, 0.0f ,0.0f));
     
     
     float planetXYZ = UKismetMathLibrary::RandomFloatInRange(3.0f, 8.0f);
