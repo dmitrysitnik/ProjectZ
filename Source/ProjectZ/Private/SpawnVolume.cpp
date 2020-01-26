@@ -87,7 +87,6 @@ void ASpawnVolume::Spawn() {
     if(ship->IsDead()) return;
     
     
-    
     if(WavesHelper->GetSpawnedEnemies() == 0 && WavesHelper->IsCanSpawn()){
         gameMode->SetNewState(UMyEnum::Wave);
     }
@@ -98,16 +97,18 @@ void ASpawnVolume::Spawn() {
         //Get a pointer to the current world
         UWorld* world = GetWorld();
         
-        
-        
-        //Spawn actor
+        //Spawn actor from WhatToSpawn array
 		AActor* spawnedActor = world->SpawnActor<AActor>(WhatToSpawn[GetRandomIndexOfToSpawn()], GetRandomPointInVolume(), FRotator(0.0f, 0.0f ,0.0f));
         
+        
+        //Count the enemies
         AEnemyBase* enemy = Cast<AEnemyBase>(spawnedActor);
         if(enemy && WavesHelper->IsCanSpawn()){
             WavesHelper->AddSpawnEnemy();
         }
         
+        
+        //Wave has ended => Set new state
         if(gameMode && !WavesHelper->IsCanSpawn()){
             gameMode->SetNewState(UMyEnum::WaveEnd);
         }
