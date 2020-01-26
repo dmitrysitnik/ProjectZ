@@ -74,17 +74,19 @@ void ASpawnVolume::Spawn() {
     
     AProjectZGameMode* gameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
     
-    
     APawn* pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
     ASpaceShip* ship = Cast<ASpaceShip>(pawn);
     
+    //if ship reference is null we should return
+    if(!ship) return;
+    
     //Spawn decorative planets
     SpawnPlanet();
-    
-    
-    
-    //Stop spawn if player is dead
+
+    //Stop spawn enemies if player is dead
     if(ship->IsDead()) return;
+    
+    
     
     if(WavesHelper->GetSpawnedEnemies() == 0 && WavesHelper->IsCanSpawn()){
         gameMode->SetNewState(UMyEnum::Wave);
