@@ -19,7 +19,7 @@ AAsteroidEnemy::AAsteroidEnemy() {
 
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> Mesh(TEXT("/Game/Geometry/Meshes/SM_Rock.SM_Rock"));
     
-	smEnemy = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
+	smEnemy = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("AsteroidMesh"));
     
 	smEnemy->SetStaticMesh(Mesh.Object);
     

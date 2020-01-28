@@ -101,7 +101,6 @@ void ASpawnVolume::Spawn() {
         //Spawn actor from WhatToSpawn array
 		AActor* spawnedActor = world->SpawnActor<AActor>(WhatToSpawn[GetRandomIndexOfToSpawn()], GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
         
-        
         //Count the enemies
         AEnemyBase* enemy = Cast<AEnemyBase>(spawnedActor);
         
