@@ -22,6 +22,12 @@ public:
 		UPROPERTY(EditAnywhere, Category = "Look")
         class UStaticMeshComponent* smEnemy;
     
+    
+    class USceneComponent* scene;
+    
+    
+    void BeginPlay() override;
+    
         
     
         //Calling function on Hit Event

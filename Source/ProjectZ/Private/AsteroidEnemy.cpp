@@ -10,6 +10,7 @@
 
 #include "Runtime/Engine/Classes/Particles/ParticleSystemComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/SceneComponent.h"
 #include "Kismet/KismetMathLibrary.h"
 
 
@@ -17,10 +18,12 @@ AAsteroidEnemy::AAsteroidEnemy() {
 	PrimaryActorTick.bCanEverTick = true;
 
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> Mesh(TEXT("/Game/Geometry/Meshes/SM_Rock.SM_Rock"));
-
+    
 	smEnemy = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
-	RootComponent = smEnemy;
+    
 	smEnemy->SetStaticMesh(Mesh.Object);
+    
+    
 	smEnemy->OnComponentBeginOverlap.AddDynamic(this, &AAsteroidEnemy::OnBeginOverlap);
 	smEnemy->OnComponentHit.AddDynamic(this, &AAsteroidEnemy::OnHit);
     
@@ -32,7 +35,11 @@ void AAsteroidEnemy::Tick(float deltaSeconds) {
 	Super::Tick(deltaSeconds);
 
 	/**Make the actor move to the bottom of a screen*/
-	FVector newLocation = GetActorLocation() + GetActorForwardVector()* -1 * deltaSeconds * 600;
+//	FVector newLocation = GetActorLocation() + GetActorForwardVector()* -1 * deltaSeconds * 600;
+    
+    FVector newLocation = GetActorLocation();
+    newLocation.X -= 10;
+    
 	SetActorLocation(newLocation);
     
 }
@@ -78,4 +85,12 @@ void AAsteroidEnemy::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AA
         }
     }
     
+}
+
+
+void AAsteroidEnemy::BeginPlay(){
+    Super::BeginPlay();
+    
+    
+    smEnemy->SetRelativeRotation(UKismetMathLibrary::RandomRotator());
 }

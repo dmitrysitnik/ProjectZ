@@ -5,6 +5,7 @@
 #include "Runtime/Engine/Classes/Components/BoxComponent.h"
 #include "TimerManager.h"
 #include "EnemyBase.h"
+#include "AsteroidEnemy.h"
 #include "WavesController.h"
 #include "Kismet/GameplayStatics.h"
 #include "ProjectZGameMode.h"
@@ -98,11 +99,21 @@ void ASpawnVolume::Spawn() {
         UWorld* world = GetWorld();
         
         //Spawn actor from WhatToSpawn array
-		AActor* spawnedActor = world->SpawnActor<AActor>(WhatToSpawn[GetRandomIndexOfToSpawn()], GetRandomPointInVolume(), FRotator(0.0f, 0.0f ,0.0f));
+		AActor* spawnedActor = world->SpawnActor<AActor>(WhatToSpawn[GetRandomIndexOfToSpawn()], GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
+        
+        
+        
+        AAsteroidEnemy* asteroid = Cast<AAsteroidEnemy>(spawnedActor);
+        
+        if(asteroid){
+//            asteroid->smEnemy->SetWorldRotation(FRotator(0.0f, 30.0f, 0.0f));
+        }
         
         
         //Count the enemies
         AEnemyBase* enemy = Cast<AEnemyBase>(spawnedActor);
+        
+        
         if(enemy && WavesHelper->IsCanSpawn()){
             WavesHelper->AddSpawnEnemy();
         }
