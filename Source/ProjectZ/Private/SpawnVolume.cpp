@@ -102,14 +102,6 @@ void ASpawnVolume::Spawn() {
 		AActor* spawnedActor = world->SpawnActor<AActor>(WhatToSpawn[GetRandomIndexOfToSpawn()], GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
         
         
-        
-        AAsteroidEnemy* asteroid = Cast<AAsteroidEnemy>(spawnedActor);
-        
-        if(asteroid){
-//            asteroid->smEnemy->SetWorldRotation(FRotator(0.0f, 30.0f, 0.0f));
-        }
-        
-        
         //Count the enemies
         AEnemyBase* enemy = Cast<AEnemyBase>(spawnedActor);
         
