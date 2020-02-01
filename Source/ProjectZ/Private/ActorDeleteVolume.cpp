@@ -25,6 +25,8 @@ void AActorDeleteVolume::BeginPlay()
 void AActorDeleteVolume::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+    
+    DeleteActorsInsideBox();
 
 }
 
