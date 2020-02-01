@@ -30,9 +30,14 @@ void AActorDeleteVolume::Tick(float DeltaTime)
 
 
 void AActorDeleteVolume::DeleteActorsInsideBox(){
-    
+    //Get all actors inside box component
     TArray<AActor*> overlappedActors;
     mBox->GetOverlappingActors(overlappedActors);
+    
+    //Delete all actors
+    for(auto actor : overlappedActors){
+        actor->Destroy();
+    }
     
 }
 
