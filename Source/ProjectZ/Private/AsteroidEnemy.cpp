@@ -21,7 +21,11 @@ AAsteroidEnemy::AAsteroidEnemy() {
     
 	smEnemy = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("AsteroidMesh"));
     
+    RootComponent = smEnemy;
+    
 	smEnemy->SetStaticMesh(Mesh.Object);
+    
+    
     
     
 	smEnemy->OnComponentBeginOverlap.AddDynamic(this, &AAsteroidEnemy::OnBeginOverlap);
@@ -91,6 +95,9 @@ void AAsteroidEnemy::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AA
 void AAsteroidEnemy::BeginPlay(){
     Super::BeginPlay();
     
+    //Set a random rotation
+    SetActorRotation(UKismetMathLibrary::RandomRotator());
     
-    smEnemy->SetRelativeRotation(UKismetMathLibrary::RandomRotator());
+    float randomSizeXYZ = UKismetMathLibrary::RandomFloatInRange(0.6f, 1.2f);
+    SetActorScale3D(FVector(randomSizeXYZ, randomSizeXYZ, randomSizeXYZ));
 }
