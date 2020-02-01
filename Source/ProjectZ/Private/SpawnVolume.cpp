@@ -85,7 +85,12 @@ void ASpawnVolume::Spawn() {
     SpawnPlanet();
 
     //Stop spawn enemies if player is dead
-    if(ship->IsDead()) return;
+    if(ship->IsDead()){
+        WavesHelper->Init();
+        return;
+    }
+    
+    
     
     
     if(WavesHelper->GetSpawnedEnemies() == 0 && WavesHelper->IsCanSpawn()){

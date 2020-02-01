@@ -25,6 +25,8 @@ public:
     
     FORCEINLINE unsigned int GetSpawnedEnemies() const { return mCurrentSpawned; };
     
+    void Init();
+    
     
 protected:
     

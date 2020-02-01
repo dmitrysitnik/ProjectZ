@@ -3,9 +3,9 @@
 
 #include "WavesController.h"
 
-WavesController::WavesController(unsigned int mCount)
+WavesController::WavesController(unsigned int count)
 {
-    mEnemiesInWave = mCount;
+    mEnemiesInWave = count;
 }
 
 
@@ -23,6 +23,12 @@ void WavesController::CheckWaveEnd(){
     }
 }
 
+
+
+void WavesController::Init(){
+    mCurrentSpawned = 0;
+    bCanSpawn = true;
+}
 
 
 
