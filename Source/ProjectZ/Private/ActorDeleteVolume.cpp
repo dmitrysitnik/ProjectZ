@@ -10,6 +10,8 @@ AActorDeleteVolume::AActorDeleteVolume()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
     
+    
+    //Create the box component
     mBox = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComponent0"));
 
 }

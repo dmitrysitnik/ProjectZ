@@ -98,6 +98,6 @@ void AAsteroidEnemy::BeginPlay(){
     //Set a random rotation
     SetActorRotation(UKismetMathLibrary::RandomRotator());
     
-    float randomSizeXYZ = UKismetMathLibrary::RandomFloatInRange(0.6f, 1.2f);
+    float randomSizeXYZ = UKismetMathLibrary::RandomFloatInRange(minAsteroidSize, maxAsteroidSize);
     SetActorScale3D(FVector(randomSizeXYZ, randomSizeXYZ, randomSizeXYZ));
 }

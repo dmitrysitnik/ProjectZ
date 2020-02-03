@@ -23,6 +23,13 @@ public:
         class UStaticMeshComponent* smEnemy;
     
     
+    UPROPERTY(EditAnywhere, Category = "Look")
+    float minAsteroidSize = 0.6f;
+    
+    
+    UPROPERTY(EditAnywhere, Category = "Look")
+    float maxAsteroidSize = 1.2f;
+    
     class USceneComponent* scene;
     
     
