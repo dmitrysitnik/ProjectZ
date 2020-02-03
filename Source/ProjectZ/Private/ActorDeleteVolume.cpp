@@ -25,12 +25,12 @@ void AActorDeleteVolume::BeginPlay()
 void AActorDeleteVolume::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-    
     DeleteActorsInsideBox();
-
 }
 
 
+
+//Method that delete actors in the box component
 void AActorDeleteVolume::DeleteActorsInsideBox(){
     //Get all actors inside box component
     TArray<AActor*> overlappedActors;
