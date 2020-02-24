@@ -204,8 +204,8 @@ void ASpaceShip::Death(){
     SetActorHiddenInGame(true);
     
     
-    //Move by Z axis
-    currentLocation.Z = -100;
+    //Move by Z axis to dont collapse any objects
+    currentLocation.Z = -500;
     SetActorLocation(currentLocation);
     
 }
