@@ -179,15 +179,11 @@ void ASpaceShip::Restart(){
     
 }
 
-
-
 void ASpaceShip::Death(){
     
     
     //If player is invulnerable now then do not make him dead
     if(bIsGod) return;
-    
-    
     
     //Set the flags of a player state
     //Now can restart and cannot fire
@@ -203,11 +199,9 @@ void ASpaceShip::Death(){
     //Hide the actor on a level
     SetActorHiddenInGame(true);
     
-    
     //Move by Z axis to dont collapse any objects
     currentLocation.Z = -500;
     SetActorLocation(currentLocation);
-    
 }
 
 
