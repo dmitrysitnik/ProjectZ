@@ -11,13 +11,13 @@ class PROJECTZ_API ASpaceShip : public APawn
 {
 	GENERATED_BODY()
 
-		/* The mesh component */
-		UPROPERTY(Category = Mesh, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-		class UStaticMeshComponent* ShipMeshComponent;
+    /* The mesh component */
+    UPROPERTY(Category = Mesh, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+    class UStaticMeshComponent* ShipMeshComponent;
 
 	/** The camera */
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-		class UCameraComponent* CameraComponent;
+    class UCameraComponent* CameraComponent;
     
     /** The sphere component */
     UPROPERTY(Category = Spawning, VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
@@ -25,7 +25,14 @@ class PROJECTZ_API ASpaceShip : public APawn
 
 	/** Camera boom positioning the camera above the character */
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-		class USpringArmComponent* CameraBoom;
+    class USpringArmComponent* CameraBoom;
+    
+    
+    UPROPERTY(Category = UI, EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+    TSubclassOf<class UUserWidget> wGameUI;
+    
+    // Variable to hold the widget After Creating it.
+    UUserWidget* GameUI;
 
 public:
 	ASpaceShip();
@@ -113,5 +120,6 @@ public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
     
-    FORCEINLINE bool IsDead() const {return bIsDead; }
+    UFUNCTION(BlueprintCallable)
+    FORCEINLINE bool IsDead() const { return bIsDead; }
 };
