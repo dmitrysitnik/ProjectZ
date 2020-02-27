@@ -26,13 +26,6 @@ class PROJECTZ_API ASpaceShip : public APawn
 	/** Camera boom positioning the camera above the character */
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
     class USpringArmComponent* CameraBoom;
-    
-    
-    UPROPERTY(Category = UI, EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-    TSubclassOf<class UUserWidget> wGameUI;
-    
-    // Variable to hold the widget After Creating it.
-    UUserWidget* GameUI;
 
 public:
 	ASpaceShip();
