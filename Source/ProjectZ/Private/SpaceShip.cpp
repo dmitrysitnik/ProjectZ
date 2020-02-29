@@ -202,6 +202,10 @@ void ASpaceShip::Death(){
     //Move by Z axis to dont collapse any objects
     currentLocation.Z = -500;
     SetActorLocation(currentLocation);
+    
+    
+    AddAfterDeathHUD();
+    
 }
 
 
@@ -216,6 +220,21 @@ void ASpaceShip::SetInvulnerable(bool bInvulnerable, float invulnerableSeconds){
     if (bIsGod) {
         GetWorld()->GetTimerManager().SetTimer(TimerHandle_ShieldExpired, this, &ASpaceShip::SetInvulnerableFalse, invulnerableSeconds);
     }
+}
+
+
+void ASpaceShip::AddAfterDeathHUD(){
+    
+    
+    if(!AfterDeathWidget) return;
+
+    UUserWidget* widget = CreateWidget<UUserWidget>(GetWorld(), AfterDeathWidget);
+
+    if(widget){
+        widget->AddToViewport();
+    }
+    
+    
 }
 
 

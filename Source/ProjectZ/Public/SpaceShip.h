@@ -51,6 +51,10 @@ public:
     class USoundBase* mExplosion;
     
     
+    UPROPERTY(Category = UI, EditAnywhere, BlueprintReadWrite)
+    TSubclassOf<class UUserWidget> AfterDeathWidget;
+    
+    
 
 	// Begin Actor Interface
 	virtual void Tick(float DeltaSeconds) override;
@@ -97,7 +101,10 @@ private:
     
     /** Logic bounded with a level restart*/
     void Restart();
-
+    
+    /** Add HUD after player has dead*/
+    void AddAfterDeathHUD();
+    
 	/** Handle for efficient management of ShotTimerExpired timer */
 	FTimerHandle TimerHandle_ShotTimerExpired;
     
