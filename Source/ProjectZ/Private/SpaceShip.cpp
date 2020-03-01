@@ -234,7 +234,6 @@ void ASpaceShip::AddAfterDeathHUD(){
         widget->AddToViewport();
     }
     
-    
 }
 
 
