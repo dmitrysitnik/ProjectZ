@@ -48,7 +48,10 @@ ASpawnVolume::ASpawnVolume()
 void ASpawnVolume::BeginPlay()
 {
 	Super::BeginPlay();
-//    WavesHelper->Init();
+    
+    
+    //Init waves helper's properties because after restart should star over 
+    WavesHelper->Init();
 }
 
 // Called every frame
@@ -84,15 +87,6 @@ void ASpawnVolume::Spawn() {
     
     //Spawn decorative planets
     SpawnPlanet();
-
-    //Stop spawn enemies if player is dead
-    if(ship->IsDead()){
-        WavesHelper->Init();
-        return;
-    }
-    
-    
-    
     
     if(WavesHelper->GetSpawnedEnemies() == 0 && WavesHelper->IsCanSpawn()){
         gameMode->SetNewState(UMyEnum::Wave);
