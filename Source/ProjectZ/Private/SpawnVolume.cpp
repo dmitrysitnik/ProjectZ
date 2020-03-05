@@ -48,6 +48,7 @@ ASpawnVolume::ASpawnVolume()
 void ASpawnVolume::BeginPlay()
 {
 	Super::BeginPlay();
+//    WavesHelper->Init();
 }
 
 // Called every frame
