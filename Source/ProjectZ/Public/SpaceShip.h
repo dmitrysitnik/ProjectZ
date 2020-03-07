@@ -78,6 +78,10 @@ public:
     
     /* Disable the invulnerable flag**/
     void SetInvulnerableFalse();
+    
+    
+    /* Method to set slowdown */
+    void SetSlowdown(float slowDownTime);
 
 	//// Static names for axis bindings
 	static const FName MoveForwardBinding;
