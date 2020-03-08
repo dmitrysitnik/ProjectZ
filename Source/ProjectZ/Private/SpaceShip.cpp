@@ -70,7 +70,7 @@ ASpaceShip::ASpaceShip()
 	CameraComponent->bUsePawnControlRotation = false;	// Camera does not rotate relative to arm
 
 	// Movement
-	MoveSpeed = 100.0f;
+    MoveSpeed = spaceShipSpeed;
     
 	// Weapon
 	GunOffset = FVector(90.f, 0.f, 0.f);
@@ -226,7 +226,6 @@ void ASpaceShip::SetInvulnerable(bool bInvulnerable, float invulnerableSeconds){
 
 void ASpaceShip::AddAfterDeathHUD(){
     
-    
     if(!AfterDeathWidget) return;
 
     UUserWidget* widget = CreateWidget<UUserWidget>(GetWorld(), AfterDeathWidget);
@@ -239,9 +238,18 @@ void ASpaceShip::AddAfterDeathHUD(){
 
 
 
-void ASpaceShip::SetSlowdown(float slowdownTime){
-    
+void ASpaceShip::SetSpaceshipMoveSpeed(float newSpaceShip){
+    MoveSpeed = newSpaceShip;
 }
 
 
+void ASpaceShip::SetSpaceShipMovespeedToDefault(){
+    MoveSpeed = spaceShipSpeed;
+}
+
+
+void ASpaceShip::SetSlowdown(float slowdownTime){
+    
+    GetWorld()->GetTimerManager().SetTimer(TimerHandle_Slowdown, this, &ASpaceShip::SetSpaceShipMovespeedToDefault, slowdownTime);
+}
 

@@ -80,8 +80,20 @@ public:
     void SetInvulnerableFalse();
     
     
+    
+    
     /* Method to set slowdown */
     void SetSlowdown(float slowDownTime);
+    
+    /* Const for ussual speed of a space ship **/
+    const float spaceShipSpeed = 100.0f;
+    
+    
+    UFUNCTION(BlueprintCallable)
+    void SetSpaceshipMoveSpeed(float newMoveSpeed = 100.0f);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetSpaceShipMovespeedToDefault();
 
 	//// Static names for axis bindings
 	static const FName MoveForwardBinding;
@@ -106,15 +118,17 @@ private:
     /** Logic bounded with a level restart*/
     void Restart();
     
-    /** Add HUD after player has dead*/
+    /** Add HUD after player has dead */
     void AddAfterDeathHUD();
     
 	/** Handle for efficient management of ShotTimerExpired timer */
 	FTimerHandle TimerHandle_ShotTimerExpired;
     
-    
     /* Handle invulnerable flag **/
     FTimerHandle TimerHandle_ShieldExpired;
+    
+    /** Handle slowdown  */
+    FTimerHandle TimerHandle_Slowdown;
 
 public:
 	/** Returns ShipMeshComponent subobject **/
