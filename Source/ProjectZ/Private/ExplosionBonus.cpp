@@ -70,7 +70,6 @@ void AExplosionBonus::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, A
         ASpaceShip* player = Cast<ASpaceShip>(OtherActor);
         
         if(player){
-            UE_LOG(LogTemp, Warning, TEXT("Applied bonus"));
             ApplyBonus();
             Destroy();
         }
