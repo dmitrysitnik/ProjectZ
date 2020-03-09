@@ -16,22 +16,24 @@ class PROJECTZ_API ASlowBonus : public ABonusBase
     
 public:
     
+    UPROPERTY(EditAnywhere, Category = "Settings")
+    float mDuration = 5.0f;
+    
+    UPROPERTY(EditAnywhere, Category = "Settings")
+    float mSlowSpeed = 50.0f;
+    
+    //On begin overlap with player will save ref to player here
+    class ASpaceShip* mSpaceShip;
+    
     ASlowBonus(): ABonusBase(){
         skMeshBonus->OnComponentBeginOverlap.AddDynamic(this, &ASlowBonus::OnBeginOverlap);
         
-        //Set the default bonus duration
-        mDuration = 5.0f;
     }
     
-    
-    UPROPERTY(EditAnywhere, Category = "Settings")
-    float mDuration;
     
     /** Apply the bonus*/
     virtual void ApplyBonus() override;
     
-    
-    class ASpaceShip* mSpaceShip;
     
     /** Function called on the overlapping event's begin*/
     UFUNCTION()

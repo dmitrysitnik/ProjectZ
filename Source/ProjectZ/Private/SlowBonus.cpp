@@ -8,9 +8,13 @@
 
 
 void ASlowBonus::ApplyBonus(){
+    
+    
+    Super::ApplyBonus();
+    
     if(!mSpaceShip) return;
     
-    mSpaceShip->SetSpaceshipMoveSpeed(mDuration);
+    mSpaceShip->SetSpaceshipMoveSpeed(mSlowSpeed);
 }
 
 
