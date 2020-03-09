@@ -70,7 +70,7 @@ ASpaceShip::ASpaceShip()
 	CameraComponent->bUsePawnControlRotation = false;	// Camera does not rotate relative to arm
 
 	// Movement
-    MoveSpeed = spaceShipSpeed;
+    SetSpaceshipMoveSpeed();
     
 	// Weapon
 	GunOffset = FVector(90.f, 0.f, 0.f);
