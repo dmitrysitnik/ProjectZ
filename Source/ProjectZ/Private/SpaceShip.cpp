@@ -100,9 +100,6 @@ void ASpaceShip::Tick(float DeltaSeconds)
     
     if(bIsDead) return;
     
-    
-    UE_LOG(LogTemp, Warning, TEXT("Movespeed: %f"), MoveSpeed);
-    
 	// Find movement direction
 	const float ForwardValue = GetInputAxisValue(MoveForwardBinding);
 	const float RightValue = GetInputAxisValue(MoveRightBinding);
