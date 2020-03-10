@@ -20,7 +20,7 @@ public:
     float mDuration = 5.0f;
     
     UPROPERTY(EditAnywhere, Category = "Settings")
-    float mSlowSpeed = 50.0f;
+    float mSlowSpeed = 350.0f;
     
     //On begin overlap with player will save ref to player here
     class ASpaceShip* mSpaceShip;

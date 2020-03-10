@@ -14,7 +14,8 @@ void ASlowBonus::ApplyBonus(){
     
     if(!mSpaceShip) return;
     
-    mSpaceShip->SetSpaceshipMoveSpeed(mSlowSpeed);
+    //Set slow speed and run the timer 
+    mSpaceShip->SetSlowdown(mSlowSpeed, mDuration);
 }
 
 
