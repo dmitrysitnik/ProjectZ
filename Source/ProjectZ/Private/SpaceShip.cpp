@@ -70,7 +70,7 @@ ASpaceShip::ASpaceShip()
 	CameraComponent->bUsePawnControlRotation = false;	// Camera does not rotate relative to arm
 
 	// Movement
-    SetSpaceshipMoveSpeed();
+    SetSpaceshipMoveSpeed(spaceShipSpeed);
     
 	// Weapon
 	GunOffset = FVector(90.f, 0.f, 0.f);
@@ -99,6 +99,9 @@ void ASpaceShip::Tick(float DeltaSeconds)
 {
     
     if(bIsDead) return;
+    
+    
+    UE_LOG(LogTemp, Warning, TEXT("Movespeed: %f"), MoveSpeed);
     
 	// Find movement direction
 	const float ForwardValue = GetInputAxisValue(MoveForwardBinding);
@@ -170,8 +173,6 @@ void ASpaceShip::ShotTimerExpired()
 void ASpaceShip::Restart(){
     
     AProjectZGameMode* gameMode = (AProjectZGameMode*)GetWorld()->GetAuthGameMode();
-    UE_LOG(LogTemp, Warning, TEXT("Restart"));
-    
     
     if(gameMode && bCanRestart){
         bCanRestart = false;
@@ -248,8 +249,8 @@ void ASpaceShip::SetSpaceShipMovespeedToDefault(){
 }
 
 
-void ASpaceShip::SetSlowdown(float slowdownTime){
-    
+void ASpaceShip::SetSlowdown(float newSpeed, float slowdownTime){
+    SetSpaceshipMoveSpeed(newSpeed);
     GetWorld()->GetTimerManager().SetTimer(TimerHandle_Slowdown, this, &ASpaceShip::SetSpaceShipMovespeedToDefault, slowdownTime);
 }
 

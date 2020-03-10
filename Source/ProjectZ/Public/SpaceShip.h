@@ -83,14 +83,14 @@ public:
     
     
     /* Method to set slowdown */
-    void SetSlowdown(float slowDownTime);
+    void SetSlowdown(float newSpeed, float slowDownTime);
     
     /* Const for ussual speed of a space ship **/
-    const float spaceShipSpeed = 100.0f;
+    const float spaceShipSpeed = 700.0f;
     
     
     UFUNCTION(BlueprintCallable)
-    void SetSpaceshipMoveSpeed(float newMoveSpeed = 100.0f);
+    void SetSpaceshipMoveSpeed(float newMoveSpeed = 700.0f);
     
     UFUNCTION(BlueprintCallable)
     void SetSpaceShipMovespeedToDefault();
