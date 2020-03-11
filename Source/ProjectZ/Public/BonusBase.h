@@ -23,6 +23,8 @@ protected:
     //virtual function to override in inherited classes which applies a class bonus
     virtual void ApplyBonus();
     
+    virtual void RewriteMaterial();
+    
     
 public:	
 	// Called every frame
