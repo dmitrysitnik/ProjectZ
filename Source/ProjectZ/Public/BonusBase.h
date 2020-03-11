@@ -34,6 +34,11 @@ public:
     class USphereComponent* SphereComponent;
     
     
+    
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Appearance")
+    class UMaterial* MaterialToRewrite;
+    
+    
     //Particle component to visualize apply
     UPROPERTY(Category = Effects, EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
     class UParticleSystem* ParticleSystem;

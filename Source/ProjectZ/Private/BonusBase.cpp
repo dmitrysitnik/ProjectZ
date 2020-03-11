@@ -16,18 +16,13 @@ ABonusBase::ABonusBase()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
     
-    
-    
     static ConstructorHelpers::FObjectFinder<UStaticMesh> BonusMesh(TEXT("/Game/Geometry/Meshes/Bonus_SM.Bonus_SM"));
     static ConstructorHelpers::FObjectFinder<USkeletalMesh> BonusSkelet(TEXT("/Game/Geometry/Meshes/SK_Bonus.SK_Bonus"));
     
     //Create the mesh component
-//    SmBonus = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BonusMesh"));
-//    scene = CreateDefaultSubobject<USceneComponent>(TEXT("SkeletMesh"));
     skMeshBonus = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SkeletalMesh"));
     
     skMeshBonus->SetGenerateOverlapEvents(true);
-    
     
     RootComponent = skMeshBonus;
     
