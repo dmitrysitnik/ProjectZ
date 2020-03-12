@@ -34,6 +34,8 @@ public:
     /** Apply the bonus*/
     virtual void ApplyBonus() override;
     
+    virtual void BeginPlay() override;
+    
     
     /** Function called on the overlapping event's begin*/
     UFUNCTION()

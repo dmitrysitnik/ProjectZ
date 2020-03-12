@@ -46,3 +46,11 @@ void AShieldBonus::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AAct
     
 }
 
+
+void AShieldBonus::BeginPlay(){
+    Super::BeginPlay();
+    
+    
+    RewriteMaterial();
+}
+

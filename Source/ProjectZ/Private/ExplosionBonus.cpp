@@ -83,3 +83,9 @@ void AExplosionBonus::Tick(float DeltaTime){
     SphereComponent->SetSphereRadius(SphereRadius);
 }
 
+
+void AExplosionBonus::BeginPlay(){
+    Super::BeginPlay();
+    RewriteMaterial();
+}
+

@@ -26,10 +26,6 @@ void ASlowBonus::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor
         
         ASpaceShip* player = Cast<ASpaceShip>(OtherActor);
         
-        if (MaterialToRewrite){
-         skMeshBonus->SetMaterial(0, MaterialToRewrite);
-        }
-        
         
         if(player){
             
@@ -41,6 +37,13 @@ void ASlowBonus::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor
         }
     }
    
+}
+
+
+void ASlowBonus::BeginPlay(){
+    Super::BeginPlay();
+    
+    RewriteMaterial();
 }
 
 

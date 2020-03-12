@@ -27,9 +27,13 @@ public:
     UPROPERTY(EditAnywhere, Category = "Settings")
     float mDuration;
     
+    virtual void BeginPlay() override;
+    
 protected:
     //reference to the player's ship
     class ASpaceShip* mSpaceShip;
+    
+    
     
     /** Apply this bonus */
     virtual void ApplyBonus() override;
