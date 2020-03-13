@@ -25,7 +25,6 @@ public:
     /** Constructor*/
     AExplosionBonus() : ABonusBase(){
         //Add function to process overlapping
-//        SmBonus->OnComponentBeginOverlap.AddDynamic(this, &AExplosionBonus::OnBeginOverlap);
         skMeshBonus->OnComponentBeginOverlap.AddDynamic(this, &AExplosionBonus::OnBeginOverlap);
         
         //Set radius of an explosion

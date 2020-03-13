@@ -10,7 +10,7 @@ UCLASS(Blueprintable)
 class PROJECTZ_API ASpaceShip : public APawn
 {
 	GENERATED_BODY()
-
+    
     /* The mesh component */
     UPROPERTY(Category = Mesh, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
     class UStaticMeshComponent* ShipMeshComponent;
@@ -28,23 +28,25 @@ class PROJECTZ_API ASpaceShip : public APawn
     class USpringArmComponent* CameraBoom;
 
 public:
-	ASpaceShip();
-
+	
+    /* Const for ussual speed of a space ship **/
+    const float spaceShipSpeed = 700.0f;
+    
 	/** Offset from the ships location to spawn projectiles */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-		FVector GunOffset;
+    FVector GunOffset;
 
 	/* How fast the weapon will fire */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-		float FireRate;
+    float FireRate;
 
 	/* The speed our ship moves around the level */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-		float MoveSpeed;
+    float MoveSpeed;
 
 	/** Sound to play each time we fire */
 	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
-		class USoundBase* FireSound;
+    class USoundBase* FireSound;
     
     
     UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
@@ -54,7 +56,7 @@ public:
     UPROPERTY(Category = UI, EditAnywhere, BlueprintReadWrite)
     TSubclassOf<class UUserWidget> AfterDeathWidget;
     
-    
+    ASpaceShip();
 
 	// Begin Actor Interface
 	virtual void Tick(float DeltaSeconds) override;
@@ -67,7 +69,6 @@ public:
     /* Player death function */
     void Death();
     
-    
     /* Set new state for the invulnerable flag **/
     UFUNCTION(BlueprintCallable)
     void SetInvulnerable(bool bInvulnerable, float invulnerableSeconds = 0.0f);
@@ -79,14 +80,8 @@ public:
     /* Disable the invulnerable flag**/
     void SetInvulnerableFalse();
     
-    
-    
-    
     /* Method to set slowdown */
     void SetSlowdown(float newSpeed, float slowDownTime);
-    
-    /* Const for ussual speed of a space ship **/
-    const float spaceShipSpeed = 700.0f;
     
     
     UFUNCTION(BlueprintCallable)
