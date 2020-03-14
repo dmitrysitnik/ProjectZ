@@ -49,7 +49,6 @@ void ASpawnVolume::BeginPlay()
 {
 	Super::BeginPlay();
     
-    
     //Init waves helper's properties because after restart should star over 
     WavesHelper->Init();
 }
@@ -180,4 +179,14 @@ void ASpawnVolume::SpawnPlanet(){
 
 void ASpawnVolume::PlanetTimerExpired(){
     bCanSpawnPlanet = true;
+}
+
+
+
+TSubclassOf<AActor> ASpawnVolume::GetActorToSpawn(){
+    
+    
+    
+    return WhatToSpawn[GetRandomIndexOfToSpawn()];
+    
 }

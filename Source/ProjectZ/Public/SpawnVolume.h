@@ -23,16 +23,14 @@ public:
 		class UBoxComponent* WhereToSpawn;
 
 	UPROPERTY(EditAnywhere, Category = "Spawning")
-		TArray<TSubclassOf<class AActor>> WhatToSpawn;
-    
-    
+    TArray<TSubclassOf<class AActor>> WhatToSpawn;
     
     
     UPROPERTY(EditAnywhere, Category = "Spawning")
+    TArray<TSubclassOf<class AActor>> BonusToSpawn;
+    
+    UPROPERTY(EditAnywhere, Category = "Spawning")
     TArray<TSubclassOf<class AActor>> PlanetsToSpawn;
-
-    
-    
     
 
 protected:
@@ -99,6 +97,9 @@ public:
     
     
     void SpawnPlanet();
+    
+    UFUNCTION(BlueprintCallable)
+    TSubclassOf<class AActor> GetActorToSpawn();
 
 
 private:
