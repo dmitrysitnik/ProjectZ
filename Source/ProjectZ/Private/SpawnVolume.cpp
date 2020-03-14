@@ -184,13 +184,14 @@ void ASpawnVolume::PlanetTimerExpired(){
 
 
 TSubclassOf<AActor> ASpawnVolume::GetActorToSpawn(){
+    
+    //TO-DO: Remove probability from method - add a parameter for each probability
     const int32 maxValue = 100;
-    const int32 bonusProbability = 20;
-    const int32 enemyProbability = 80;
-    TSubclassOf<AActor> returnActor;
+    const int32 bonusProbability = 10;
+    const int32 enemyProbability = 90;
     
     int32 randomNum = UKismetMathLibrary::RandomIntegerInRange(0, maxValue);
     
-    return randomNum > enemyProbability ? WhatToSpawn[GetRandomIndexOfToSpawn()] : BonusToSpawn[0];
+    return randomNum > enemyProbability ? BonusToSpawn[0] : WhatToSpawn[GetRandomIndexOfToSpawn()];
     
 }
