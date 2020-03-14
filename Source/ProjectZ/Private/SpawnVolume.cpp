@@ -97,8 +97,8 @@ void ASpawnVolume::Spawn() {
         //Get a pointer to the current world
         UWorld* world = GetWorld();
         
-        //Spawn actor from WhatToSpawn array
-		AActor* spawnedActor = world->SpawnActor<AActor>(WhatToSpawn[GetRandomIndexOfToSpawn()], GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
+        //Spawn actor from arrays to spawn(Enemies, Bonuses)
+		AActor* spawnedActor = world->SpawnActor<AActor>(GetActorToSpawn(), GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
         
         //Count the enemies
         AEnemyBase* enemy = Cast<AEnemyBase>(spawnedActor);
@@ -184,9 +184,13 @@ void ASpawnVolume::PlanetTimerExpired(){
 
 
 TSubclassOf<AActor> ASpawnVolume::GetActorToSpawn(){
+    const int32 maxValue = 100;
+    const int32 bonusProbability = 20;
+    const int32 enemyProbability = 80;
+    TSubclassOf<AActor> returnActor;
     
+    int32 randomNum = UKismetMathLibrary::RandomIntegerInRange(0, maxValue);
     
-    
-    return WhatToSpawn[GetRandomIndexOfToSpawn()];
+    return randomNum > enemyProbability ? WhatToSpawn[GetRandomIndexOfToSpawn()] : BonusToSpawn[0];
     
 }
