@@ -39,6 +39,11 @@ ASpawnVolume::ASpawnVolume()
     
     PlanetSpawnRate = 3.0f;
     
+    
+    //Set probability for actors to spawn
+    mEnemyProbability = 90;
+    mBonusProbability = 10;
+    
     //Create waveController instance
     WavesHelper = new class WavesController(mEnemiesInWave);
     
@@ -174,6 +179,7 @@ void ASpawnVolume::SpawnPlanet(){
     //Run Planet's timer
     GetWorld()->GetTimerManager().SetTimer(TimerHandle_PlanetTimer, this, &ASpawnVolume::PlanetTimerExpired, PlanetSpawnRate);
     bCanSpawnPlanet = false;
+    
 }
 
 
@@ -182,16 +188,20 @@ void ASpawnVolume::PlanetTimerExpired(){
 }
 
 
+int ASpawnVolume::GetRandomIndex(TArray<TSubclassOf<class AActor>> array){
+    int32 maxValue = array.Num() - 1;
+    
+    return maxValue > 0 ? UKismetMathLibrary::RandomIntegerInRange(0, maxValue) : 0;
+}
+
 
 TSubclassOf<AActor> ASpawnVolume::GetActorToSpawn(){
     
-    //TO-DO: Remove probability from method - add a parameter for each probability
     const int32 maxValue = 100;
-    const int32 bonusProbability = 10;
-    const int32 enemyProbability = 90;
+    
     
     int32 randomNum = UKismetMathLibrary::RandomIntegerInRange(0, maxValue);
     
-    return randomNum > enemyProbability ? BonusToSpawn[0] : WhatToSpawn[GetRandomIndexOfToSpawn()];
+    return randomNum > mEnemyProbability ? BonusToSpawn[GetRandomIndex(BonusToSpawn)] : WhatToSpawn[GetRandomIndexOfToSpawn()];
     
 }

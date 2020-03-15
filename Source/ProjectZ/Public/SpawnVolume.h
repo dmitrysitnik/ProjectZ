@@ -32,6 +32,14 @@ public:
     UPROPERTY(EditAnywhere, Category = "Spawning")
     TArray<TSubclassOf<class AActor>> PlanetsToSpawn;
     
+    
+    UPROPERTY(EditAnywhere, Category = "Spawning")
+    int mBonusProbability = 20;
+    
+    
+    UPROPERTY(EditAnywhere, Category = "Spawning")
+    int mEnemyProbability = 80;
+    
 
 protected:
 	// Called when the game starts or when spawned
@@ -64,6 +72,9 @@ protected:
     
     /*Class to control waves in the game */
     class WavesController* WavesHelper;
+    
+    
+    int GetRandomIndex(TArray<TSubclassOf<class AActor>> array);
 
 public:	
 	// Called every frame
