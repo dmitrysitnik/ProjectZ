@@ -26,6 +26,8 @@ ABonusBase::ABonusBase()
     
     RootComponent = skMeshBonus;
     
+    mPlaceForIdleShining = CreateDefaultSubobject<USceneComponent>(TEXT("IdleParticleComponent"));
+    
 //    SmBonus->SetStaticMesh(BonusMesh.Object);
     skMeshBonus->SetSkeletalMesh(BonusSkelet.Object);
     
@@ -39,6 +41,10 @@ ABonusBase::ABonusBase()
 void ABonusBase::BeginPlay()
 {
 	Super::BeginPlay();
+    
+    if(mBonusIdleShining){
+        UGameplayStatics::SpawnEmitterAttached(mBonusIdleShining, skMeshBonus);
+    }
 }
 
 // Called every frame
@@ -55,6 +61,11 @@ void ABonusBase::Tick(float DeltaTime)
 void ABonusBase::ApplyBonus(){
     if (mBonusSound) {
         UGameplayStatics::PlaySoundAtLocation(this, mBonusSound, GetActorLocation());
+    }
+    
+    
+    if(mBonusPickedUp){
+        UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), mBonusPickedUp, GetActorLocation());
     }
 }
 

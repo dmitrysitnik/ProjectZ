@@ -199,7 +199,6 @@ TSubclassOf<AActor> ASpawnVolume::GetActorToSpawn(){
     
     const int32 maxValue = 100;
     
-    
     int32 randomNum = UKismetMathLibrary::RandomIntegerInRange(0, maxValue);
     
     return randomNum > mEnemyProbability ? BonusToSpawn[GetRandomIndex(BonusToSpawn)] : WhatToSpawn[GetRandomIndexOfToSpawn()];
