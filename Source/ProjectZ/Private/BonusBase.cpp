@@ -43,7 +43,7 @@ void ABonusBase::BeginPlay()
 	Super::BeginPlay();
     
     if(mBonusIdleShining){
-        UGameplayStatics::SpawnEmitterAttached(mBonusIdleShining, skMeshBonus);
+        UGameplayStatics::SpawnEmitterAttached(mBonusIdleShining, mPlaceForIdleShining);
     }
 }
 
