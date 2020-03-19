@@ -43,7 +43,10 @@ void ABonusBase::BeginPlay()
 	Super::BeginPlay();
     
     if(mBonusIdleShining){
-        UGameplayStatics::SpawnEmitterAttached(mBonusIdleShining, mPlaceForIdleShining);
+        FVector emitterLocation = GetActorLocation();
+        
+        
+        UGameplayStatics::SpawnEmitterAttached(mBonusIdleShining, skMeshBonus, TEXT("idleShining"), FVector(0,0,130), FRotator(-90,0,90), EAttachLocation::KeepRelativeOffset);
     }
 }
 
