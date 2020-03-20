@@ -46,7 +46,7 @@ void ABonusBase::BeginPlay()
         FVector emitterLocation = GetActorLocation();
         
         
-        UGameplayStatics::SpawnEmitterAttached(mBonusIdleShining, skMeshBonus, TEXT("idleShining"), FVector(0,0,130), FRotator(-90,0,90), EAttachLocation::KeepRelativeOffset);
+        UGameplayStatics::SpawnEmitterAttached(mBonusIdleShining, skMeshBonus, TEXT("idleShining"), FVector(0,0,150), FRotator(-90,0,90), EAttachLocation::KeepRelativeOffset);
     }
 }
 
