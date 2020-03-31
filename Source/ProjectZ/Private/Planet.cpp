@@ -22,7 +22,6 @@ APlanet::APlanet()
 void APlanet::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame

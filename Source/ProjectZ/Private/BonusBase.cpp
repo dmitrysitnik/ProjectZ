@@ -28,7 +28,7 @@ ABonusBase::ABonusBase()
     
     mPlaceForIdleShining = CreateDefaultSubobject<USceneComponent>(TEXT("IdleParticleComponent"));
     
-//    SmBonus->SetStaticMesh(BonusMesh.Object);
+    //    SmBonus->SetStaticMesh(BonusMesh.Object);
     skMeshBonus->SetSkeletalMesh(BonusSkelet.Object);
     
     
@@ -44,7 +44,6 @@ void ABonusBase::BeginPlay()
     
     if(mBonusIdleShining){
         FVector emitterLocation = GetActorLocation();
-        
         
         UGameplayStatics::SpawnEmitterAttached(mBonusIdleShining, skMeshBonus, TEXT("idleShining"), FVector(0,0,150), FRotator(-90,0,90), EAttachLocation::KeepRelativeOffset);
     }
@@ -65,7 +64,6 @@ void ABonusBase::ApplyBonus(){
     if (mBonusSound) {
         UGameplayStatics::PlaySoundAtLocation(this, mBonusSound, GetActorLocation());
     }
-    
     
     if(mBonusPickedUp){
         UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), mBonusPickedUp, GetActorLocation());

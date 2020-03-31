@@ -48,11 +48,6 @@ void AExplosionBonus::ApplyBonus(){
     
     Super::ApplyBonus();
     
-//    //Play sound
-//    if (mBonusSound) {
-//        UGameplayStatics::PlaySoundAtLocation(this, mBonusSound, GetActorLocation());
-//    }
-    
     //Create an explosion in the sphere raduis
     MakeExplosion();
     

@@ -16,8 +16,7 @@ class PROJECTZ_API AShieldBonus : public ABonusBase
     
 public:
     AShieldBonus() : ABonusBase(){
-        //Add function to process overlapping 
-//        SmBonus->OnComponentBeginOverlap.AddDynamic(this, &AShieldBonus::OnBeginOverlap);
+        //Add function to process overlapping
         skMeshBonus->OnComponentBeginOverlap.AddDynamic(this, &AShieldBonus::OnBeginOverlap);
         
         mDuration = 5.0f;
@@ -32,8 +31,6 @@ public:
 protected:
     //reference to the player's ship
     class ASpaceShip* mSpaceShip;
-    
-    
     
     /** Apply this bonus */
     virtual void ApplyBonus() override;
