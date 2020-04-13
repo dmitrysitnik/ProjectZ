@@ -17,8 +17,6 @@ AProjectZProjectile::AProjectZProjectile()
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh0"));
 	ProjectileMesh->SetStaticMesh(ProjectileMeshAsset.Object);
 	ProjectileMesh->SetupAttachment(RootComponent);
-//    ProjectileMesh->BodyInstance.SetCollisionProfileName("Projectile");
-//    ProjectileMesh->BodyInstance.SetCollisionProfileName("OverlapAll");
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectZProjectile::OnHit);		// set up a notification for when this component hits something
 	RootComponent = ProjectileMesh;
 
@@ -33,13 +31,10 @@ AProjectZProjectile::AProjectZProjectile()
 
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
-    
-    
 }
 
 void AProjectZProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-
 
 	//Delete the enemy actor from the scene
 	if (OtherActor)

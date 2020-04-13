@@ -5,11 +5,17 @@
 #include "TimerManager.h"
 #include "../Public/MyEnum.h"
 #include "ProjectZPawn.h"
+#include "../Public/SpaceShip.h"
 
 AProjectZGameMode::AProjectZGameMode()
 {
 	// set default pawn class to our character class
 	DefaultPawnClass = AProjectZPawn::StaticClass();
+    
+}
+
+void AProjectZGameMode::BeginPlay(){
+    player = Cast<ASpaceShip>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 }
 
 void AProjectZGameMode::RestartLevel(UObject* world, FName levelName){
@@ -29,6 +35,12 @@ void AProjectZGameMode::StateTimerExpired(){
 
 
 void AProjectZGameMode::AddPoints(int points){
+    
+    
+    if(player){
+        if(player->IsDead()) return;
+    }
+    
     mPoints += points;
 }
 

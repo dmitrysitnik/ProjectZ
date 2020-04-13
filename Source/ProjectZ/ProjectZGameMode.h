@@ -30,6 +30,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void AddPoints(int points);
+    
+    
+    virtual void BeginPlay();
         
         
     private:
@@ -39,6 +42,7 @@ public:
     //Current points in the session
     int mPoints = 0;
     
+    class ASpaceShip* player;
     
     float StateTime = 2.5f;
     
