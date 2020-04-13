@@ -9,8 +9,6 @@
 #include "../Public/MyEnum.h"
 #include "ProjectZGameMode.h"
 
-
-
 void AExplosionBonus::MakeExplosion(){
     
     // play effect of the explosion
@@ -43,7 +41,6 @@ void AExplosionBonus::MakeExplosion(){
     
 }
 
-
 void AExplosionBonus::ApplyBonus(){
     
     Super::ApplyBonus();
@@ -56,7 +53,6 @@ void AExplosionBonus::ApplyBonus(){
         gameMode->SetNewState(UMyEnum::Empty);
     }
 }
-
 
 void AExplosionBonus::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult){
     

@@ -48,7 +48,7 @@ AProjectZPawn::AProjectZPawn()
 	MoveSpeed = 1000.0f;
 	// Weapon
 	GunOffset = FVector(90.f, 0.f, 0.f);
-	FireRate = 0.1f;
+    FireRate = 2.0f;
 	bCanFire = true;
     
 }
@@ -119,16 +119,14 @@ void AProjectZPawn::FireShot(FVector FireDirection)
 				World->SpawnActor<AProjectZProjectile>(SpawnLocation, FireRotation);
 			}
 
-			bCanFire = false;
 			World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &AProjectZPawn::ShotTimerExpired, FireRate);
-
+            bCanFire = false;
 			// try and play the sound if specified
 			if (FireSound != nullptr)
 			{
 				UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
 			}
-
-			bCanFire = false;
+			
 		}
 	}
 }
