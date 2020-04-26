@@ -29,6 +29,7 @@ public:
         
         //Set radius of an explosion
         SphereComponent->SetSphereRadius(SphereRadius);
+        
     };
     
     
