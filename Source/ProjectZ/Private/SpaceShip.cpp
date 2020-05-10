@@ -139,12 +139,24 @@ void ASpaceShip::Tick(float DeltaSeconds)
     // Calculate  movement
     const FVector Movement = MoveDirection * MoveSpeed * DeltaSeconds;
     
+    
+    //Get current rotation
+    FRotator NewRotation = GetActorRotation();
+    
     // If non-zero size, move this actor
     if (Movement.SizeSquared() > 0.0f)
     {
-        const FRotator NewRotation = GetActorRotation();
         
-        
+        //Add a rotation on lefn and right movement
+        if (RightValue > 0.1f) {
+            NewRotation.Roll = 15;
+        }
+        else if (RightValue < -0.1f){
+            NewRotation.Roll = -15;
+        }
+        else if (RightValue == 0.0f){
+            NewRotation.Roll = 0.0f;
+        }
         
         //const FRotator NewRotation = Movement.Rotation();
         FHitResult Hit(1.f);
@@ -156,6 +168,10 @@ void ASpaceShip::Tick(float DeltaSeconds)
             const FVector Deflection = FVector::VectorPlaneProject(Movement, Normal2D) * (1.f - Hit.Time);
             RootComponent->MoveComponent(Deflection, NewRotation, true);
         }
+    }
+    else{
+        NewRotation.Roll = 0;
+        SetActorRotation(NewRotation);
     }
     
 }
