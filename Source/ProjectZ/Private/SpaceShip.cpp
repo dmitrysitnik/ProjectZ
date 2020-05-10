@@ -127,8 +127,8 @@ void ASpaceShip::Tick(float DeltaSeconds)
     }
     
     
-    //Check the X axu
-    if(actorLocation.X > MaxXOffset - 50 && ForwardValue > 0.0f || actorLocation.X < MinXOffset && RightValue < 0.0f) {
+    //Check the X axis restriction
+    if(actorLocation.X > MaxXOffset - 50 && ForwardValue > 0.0f || actorLocation.X < MinXOffset && ForwardValue < 0.0f) {
         ForwardValue = 0.0f;
     }
     
@@ -143,6 +143,9 @@ void ASpaceShip::Tick(float DeltaSeconds)
     if (Movement.SizeSquared() > 0.0f)
     {
         const FRotator NewRotation = GetActorRotation();
+        
+        
+        
         //const FRotator NewRotation = Movement.Rotation();
         FHitResult Hit(1.f);
         RootComponent->MoveComponent(Movement, NewRotation, true, &Hit);
