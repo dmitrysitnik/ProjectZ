@@ -30,6 +30,10 @@ void AEnemyBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+    FVector newLocation = GetActorLocation();
+    newLocation.X -= 10;
+    
+    SetActorLocation(newLocation);
 }
 
 

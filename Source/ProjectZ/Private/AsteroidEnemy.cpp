@@ -38,10 +38,12 @@ void AAsteroidEnemy::Tick(float deltaSeconds) {
 	/**Make the actor move to the bottom of a screen*/
 //	FVector newLocation = GetActorLocation() + GetActorForwardVector()* -1 * deltaSeconds * 600;
     
-    FVector newLocation = GetActorLocation();
-    newLocation.X -= 10;
     
-	SetActorLocation(newLocation);
+/** Moved to the base class*/
+//    FVector newLocation = GetActorLocation();
+//    newLocation.X -= 10;
+//
+//	SetActorLocation(newLocation);
     
 }
 
