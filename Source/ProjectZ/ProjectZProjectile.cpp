@@ -35,17 +35,9 @@ AProjectZProjectile::AProjectZProjectile()
 
 void AProjectZProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-
+    //Base implementation.
 	//Delete the enemy actor from the scene
-	if (OtherActor)
-	{
-		AEnemyBase* enemy = Cast<AEnemyBase>(OtherActor);
-		if (enemy)
-		{
-            enemy->DestroyEnemy();
-            Destroy();
-		}
-	}
+	
     
 	
 }
