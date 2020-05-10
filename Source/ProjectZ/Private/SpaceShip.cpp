@@ -188,22 +188,23 @@ void ASpaceShip::FireShot()
         const FVector SpawnLocation = GetActorLocation() + GunOffset;
         
         UWorld* const World = GetWorld();
-        if (World != NULL)
+        if (World && ProjectileToSpawn)
         {
             //spawn the projectile
-            World->SpawnActor<AProjectZProjectile>(SpawnLocation, FireRotation);
+            World->SpawnActor<AProjectZProjectile>(ProjectileToSpawn, SpawnLocation, FireRotation);
+            
+            
+            bCanFire = false;
+            World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &ASpaceShip::ShotTimerExpired, FireRate);
+            
+            //try and play the sound if specified
+            if (FireSound)
+            {
+                UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
+            }
+            
+            bCanFire = false;
         }
-        
-        bCanFire = false;
-        World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &ASpaceShip::ShotTimerExpired, FireRate);
-        
-        //try and play the sound if specified
-        if (FireSound != nullptr)
-        {
-            UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
-        }
-        
-        bCanFire = false;
     }
 }
 

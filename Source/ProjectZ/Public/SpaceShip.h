@@ -70,6 +70,9 @@ public:
     UPROPERTY(Category = UI, EditAnywhere, BlueprintReadWrite)
     TSubclassOf<class UUserWidget> AfterDeathWidget;
     
+    UPROPERTY(Category = Projectile, EditAnywhere, BlueprintReadWrite)
+    TSubclassOf<class AProjectZProjectile> ProjectileToSpawn;
+    
     ASpaceShip();
 
 	// Begin Actor Interface
