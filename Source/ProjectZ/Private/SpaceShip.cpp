@@ -114,7 +114,7 @@ void ASpaceShip::Tick(float DeltaSeconds)
     
     
     // Find movement direction
-    const ForwardValue = GetInputAxisValue(MoveForwardBinding);
+    float ForwardValue = GetInputAxisValue(MoveForwardBinding);
     float RightValue = GetInputAxisValue(MoveRightBinding);
     
     
@@ -128,7 +128,7 @@ void ASpaceShip::Tick(float DeltaSeconds)
     
     
     //Check the X axu
-    if(actorLocation.X > MaxXOffset - 50 && RightValue > 0.0f || actorLocation.X < MinXOffset && RightValue < 0.0f) {
+    if(actorLocation.X > MaxXOffset - 50 && ForwardValue > 0.0f || actorLocation.X < MinXOffset && RightValue < 0.0f) {
         ForwardValue = 0.0f;
     }
     
