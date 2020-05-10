@@ -29,7 +29,7 @@ class PROJECTZ_API ASpaceShip : public APawn
 
 public:
 	
-    /* Const for ussual speed of a space ship **/
+    /* Const for usual speed of a spaceship **/
     const float spaceShipSpeed = 700.0f;
     
 	/** Offset from the ships location to spawn projectiles */
@@ -39,6 +39,20 @@ public:
 	/* How fast the weapon will fire */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
     float FireRate;
+    
+    UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
+    float MaxYOffset;
+    
+    UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
+    float MinYOffset;
+    
+    
+    UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
+    float MaxXOffset;
+    
+    UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
+    float MinXOffset;
+    
 
 	/* The speed our ship moves around the level */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
