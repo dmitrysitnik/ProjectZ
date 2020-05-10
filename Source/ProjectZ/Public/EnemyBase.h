@@ -13,6 +13,9 @@ class PROJECTZ_API AEnemyBase : public AActor
     
 public:
     
+    UPROPERTY(EditAnywhere, Category = "Look")
+    class UStaticMeshComponent* smEnemy;
+    
     UPROPERTY(Category = Effects, EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
     class UParticleSystem* particleSystem;
     

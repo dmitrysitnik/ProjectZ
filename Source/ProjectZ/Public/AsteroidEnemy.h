@@ -19,8 +19,7 @@ public:
     
     virtual void Tick(float deltaSeconds) override;
     
-    UPROPERTY(EditAnywhere, Category = "Look")
-    class UStaticMeshComponent* smEnemy;
+    
     
     
     UPROPERTY(EditAnywhere, Category = "Look")

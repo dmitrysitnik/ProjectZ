@@ -25,9 +25,6 @@ AAsteroidEnemy::AAsteroidEnemy() {
     
 	smEnemy->SetStaticMesh(Mesh.Object);
     
-    
-    
-    
 	smEnemy->OnComponentBeginOverlap.AddDynamic(this, &AAsteroidEnemy::OnBeginOverlap);
 	smEnemy->OnComponentHit.AddDynamic(this, &AAsteroidEnemy::OnHit);
     
