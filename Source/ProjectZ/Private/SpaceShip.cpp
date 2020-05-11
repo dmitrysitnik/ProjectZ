@@ -240,8 +240,19 @@ void ASpaceShip::Death(){
     bCanFire = false;
     
     FVector currentLocation = GetActorLocation();
+    
+    //Play explosion sound
     if(mExplosion){
         UGameplayStatics::PlaySoundAtLocation(this, mExplosion, currentLocation);
+    }
+    
+    //Play destroy effect
+    if(DestroyEffect){
+        FTransform destroyTransform;
+        destroyTransform.SetScale3D(FVector(2.0f, 2.0f, 2.0f));
+        destroyTransform.SetLocation(GetActorLocation());
+        
+        UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), DestroyEffect, destroyTransform);
     }
     
     //Hide the actor on a level

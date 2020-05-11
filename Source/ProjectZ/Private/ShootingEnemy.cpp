@@ -14,25 +14,6 @@
 #include "Kismet/KismetMathLibrary.h"
 
 
-
-//AShootingEnemy::AShootingEnemy(){
-//    PrimaryActorTick.bCanEverTick = true;
-//    static ConstructorHelpers::FObjectFinder<UStaticMesh> Mesh(TEXT("/Game/Geometry/Meshes/SM_Rock.SM_Rock"));
-//    smEnemy = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShootingMesh"));
-//    RootComponent = smEnemy;
-//    smEnemy->SetStaticMesh(Mesh.Object);
-//}
-//
-//AShootingEnemy::~AShootingEnemy(){
-//
-//}
-//
-//
-//void AShootingEnemy(float deltaSeconds){
-//
-//}
-
-
 AShootingEnemy::AShootingEnemy(){
     PrimaryActorTick.bCanEverTick = true;
     
@@ -41,60 +22,57 @@ AShootingEnemy::AShootingEnemy(){
     RootComponent = smEnemy;
     smEnemy->SetStaticMesh(Mesh.Object);
     
-    
-    GunOffset = FVector(0.0f, 0.0f, 0.0f);
+    //Base GunOffset setup
+    GunOffset = FVector(-200.0f, 0.0f, 0.0f);
     FireRate = 2.0f;
-    
 }
 
 
 void AShootingEnemy::Tick(float deltaSeconds){
     Super::Tick(deltaSeconds);
-    
     FireShot();
 }
 
 void AShootingEnemy::BeginPlay(){
     Super::BeginPlay();
     bCanFire = true;
-    
 }
 
 
 
 void AShootingEnemy::FireShot(){
     // If it's ok to fire again
-    if (bCanFire == true)
+    if (!bCanFire) return;
+    
+    
+    FRotator FireRotation = GetActorRotation();
+    FireRotation.Yaw = 180.0f;
+    
+    //Spawn projectile at an offset from this pawn
+    const FVector SpawnLocation = GetActorLocation() + GunOffset;
+    
+    UWorld* const World = GetWorld();
+    if (World && ProjectileToSpawn)
     {
-
-        FRotator FireRotation = GetActorRotation();
-        FireRotation.Yaw = 180.0f;
+        //spawn the projectile
+        AProjectZProjectile *spawned = World->SpawnActor<AProjectZProjectile>(ProjectileToSpawn, SpawnLocation, FireRotation);
         
-        //Spawn projectile at an offset from this pawn
-        const FVector SpawnLocation = GetActorLocation() + GunOffset;
-
-        UWorld* const World = GetWorld();
-        if (World && ProjectileToSpawn)
-        {
-            //spawn the projectile
-            AProjectZProjectile *spawned = World->SpawnActor<AProjectZProjectile>(ProjectileToSpawn, SpawnLocation, FireRotation);
-            
-            //Set more bigger projectile after spawn
-            spawned->SetActorScale3D(FVector(2.0f, 2.0f, 2.0f));
-
-
-            bCanFire = false;
-            World->GetTimerManager().SetTimer(TimerHandle_FireTimerExpired, this, &AShootingEnemy::FireTimerExpired, FireRate);
-
-            //try and play the sound if specified
-            //               if (FireSound)
-            //               {
-            //                   UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
-            //               }
-
-            bCanFire = false;
-        }
+        //Set more bigger projectile after spawn
+        spawned->SetActorScale3D(FVector(2.0f, 2.0f, 2.0f));
+        
+        
+        bCanFire = false;
+        World->GetTimerManager().SetTimer(TimerHandle_FireTimerExpired, this, &AShootingEnemy::FireTimerExpired, FireRate);
+        
+        //try and play the sound if specified
+        //               if (FireSound)
+        //               {
+        //                   UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
+        //               }
+        
+        bCanFire = false;
     }
+    
 }
 
 

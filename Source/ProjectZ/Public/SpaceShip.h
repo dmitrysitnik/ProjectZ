@@ -66,6 +66,9 @@ public:
     UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
     class USoundBase* mExplosion;
     
+    UPROPERTY(Category = Effects, EditAnywhere, BlueprintReadWrite)
+    class UParticleSystem* DestroyEffect;
+    
     
     UPROPERTY(Category = UI, EditAnywhere, BlueprintReadWrite)
     TSubclassOf<class UUserWidget> AfterDeathWidget;
