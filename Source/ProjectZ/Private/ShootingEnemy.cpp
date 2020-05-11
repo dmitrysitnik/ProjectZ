@@ -35,13 +35,14 @@
 
 AShootingEnemy::AShootingEnemy(){
     PrimaryActorTick.bCanEverTick = true;
+    
     static ConstructorHelpers::FObjectFinder<UStaticMesh> Mesh(TEXT("/Game/Geometry/Meshes/SM_Rock.SM_Rock"));
     smEnemy = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShootingMesh"));
     RootComponent = smEnemy;
     smEnemy->SetStaticMesh(Mesh.Object);
     
     
-    GunOffset = FVector(-20.0f, 0.0f, 0.0f);
+    GunOffset = FVector(0.0f, 0.0f, 0.0f);
     FireRate = 2.0f;
     
 }
@@ -49,7 +50,6 @@ AShootingEnemy::AShootingEnemy(){
 
 void AShootingEnemy::Tick(float deltaSeconds){
     Super::Tick(deltaSeconds);
-    
     
     FireShot();
 }
@@ -67,7 +67,9 @@ void AShootingEnemy::FireShot(){
     if (bCanFire == true)
     {
 
-        const FRotator FireRotation = -1 * GetActorRotation();
+        FRotator FireRotation = GetActorRotation();
+        FireRotation.Yaw = 180.0f;
+        
         //Spawn projectile at an offset from this pawn
         const FVector SpawnLocation = GetActorLocation() + GunOffset;
 
@@ -75,7 +77,10 @@ void AShootingEnemy::FireShot(){
         if (World && ProjectileToSpawn)
         {
             //spawn the projectile
-            World->SpawnActor<AProjectZProjectile>(ProjectileToSpawn, SpawnLocation, FireRotation);
+            AProjectZProjectile *spawned = World->SpawnActor<AProjectZProjectile>(ProjectileToSpawn, SpawnLocation, FireRotation);
+            
+            //Set more bigger projectile after spawn
+            spawned->SetActorScale3D(FVector(2.0f, 2.0f, 2.0f));
 
 
             bCanFire = false;
