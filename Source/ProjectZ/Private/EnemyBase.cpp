@@ -22,18 +22,13 @@ AEnemyBase::AEnemyBase()
 void AEnemyBase::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
 void AEnemyBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-    FVector newLocation = GetActorLocation();
-    newLocation.X -= 10;
-    
-    SetActorLocation(newLocation);
+    MoveToBottom();
 }
 
 
@@ -53,6 +48,13 @@ void AEnemyBase::DestroyEnemy(){
     //Add award points
     mGameMode->AddPoints(mPointsAward);
     
+}
+
+
+void AEnemyBase::MoveToBottom(){
+    FVector newLocation = GetActorLocation();
+    newLocation.X -= 10;
+    SetActorLocation(newLocation);
 }
 
 

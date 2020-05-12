@@ -18,15 +18,5 @@ class PROJECTZ_API AAsteroidBoss : public ABossBase
     
 public:
     AAsteroidBoss();
-//        PrimaryActorTick.bCanEverTick = true;
-//
-//        static ConstructorHelpers::FObjectFinder<UStaticMesh> Mesh(TEXT("/Game/Geometry/Meshes/SM_Rock.SM_Rock"));
-//
-//        smEnemy = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("AsteroidBossMesh"));
-//
-//        RootComponent = smEnemy;
-//
-//        smEnemy->SetStaticMesh(Mesh.Object);
-//    }
 	
 };
