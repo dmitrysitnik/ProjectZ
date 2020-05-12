@@ -19,4 +19,16 @@ class PROJECTZ_API AAsteroidBoss : public ABossBase
 public:
     AAsteroidBoss();
 	
+    
+    //Calling function on BeginOverLap event
+    UFUNCTION()
+    void OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+    
+    //Calling function on Hit Event
+    UFUNCTION()
+    void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+    
 };
+
+
+

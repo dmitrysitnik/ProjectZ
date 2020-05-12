@@ -23,6 +23,9 @@ public:
     class USoundBase* mExplosionSound;
     
     
+    UPROPERTY(Category = Settings, EditAnywhere, BlueprintReadWrite)
+    float Health;
+    
     // Called every frame
     virtual void Tick(float DeltaTime) override;
     
@@ -31,6 +34,8 @@ public:
     
     // Sets default values for this actor's properties
     AEnemyBase();
+    
+    virtual void InputDamage(float damage);
     
 protected:
     // Called when the game starts or when spawned

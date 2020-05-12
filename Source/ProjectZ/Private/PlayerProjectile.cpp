@@ -13,7 +13,7 @@ void APlayerProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, 
         AEnemyBase* enemy = Cast<AEnemyBase>(OtherActor);
         if (enemy)
         {
-            enemy->DestroyEnemy();
+            enemy->InputDamage(GetDamage());
             Destroy();
         }
     }

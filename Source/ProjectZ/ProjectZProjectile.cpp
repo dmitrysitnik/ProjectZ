@@ -31,6 +31,8 @@ AProjectZProjectile::AProjectZProjectile()
 
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
+    
+    Damage = 10.0f;
 }
 
 void AProjectZProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)

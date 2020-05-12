@@ -15,6 +15,9 @@ AEnemyBase::AEnemyBase()
 	PrimaryActorTick.bCanEverTick = true;
 
     mGameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
+    
+    
+    Health = 1.0f;
 
 }
 
@@ -55,6 +58,17 @@ void AEnemyBase::MoveToBottom(){
     FVector newLocation = GetActorLocation();
     newLocation.X -= 10;
     SetActorLocation(newLocation);
+}
+
+
+void AEnemyBase::InputDamage(float damage){
+    if (Health > damage){
+        Health -= damage;
+    }
+    else{
+        DestroyEnemy();
+    }
+    
 }
 
 

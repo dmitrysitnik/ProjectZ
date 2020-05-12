@@ -27,3 +27,16 @@ AAsteroidBoss::AAsteroidBoss() : ABossBase::ABossBase(){
     
     smEnemy->SetStaticMesh(Mesh.Object);
 }
+
+
+
+//Overlap event
+void AAsteroidBoss::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult){
+
+    
+}
+
+
+void AAsteroidBoss::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit){
+    
+}

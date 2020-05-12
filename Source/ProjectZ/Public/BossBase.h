@@ -18,15 +18,13 @@ class PROJECTZ_API ABossBase : public AEnemyBase
     
 public:
     ABossBase():AEnemyBase(){
-        Health = 100.0f;
+        
     }
     
-    UPROPERTY(Category = Settings, EditAnywhere, BlueprintReadWrite)
-    float Health;
     
     
     virtual void BeginPlay() override;
     
-    virtual void InputDamage(float damage);
+    
 	
 };

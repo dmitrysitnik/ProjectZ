@@ -7,13 +7,5 @@ void ABossBase::BeginPlay(){
     Super::BeginPlay();
 }
 
-void ABossBase::InputDamage(float damage){
-    if (Health > damage){
-        Health -= damage;
-    }
-    else{
-        DestroyEnemy();
-    }
-    
-}
+
 
