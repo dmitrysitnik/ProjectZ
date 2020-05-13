@@ -13,9 +13,6 @@ AEnemyBase::AEnemyBase()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
-    mGameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
-    
     
     Health = 1.0f;
 
@@ -25,6 +22,8 @@ AEnemyBase::AEnemyBase()
 void AEnemyBase::BeginPlay()
 {
 	Super::BeginPlay();
+    
+    mGameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
 }
 
 // Called every frame
@@ -49,7 +48,10 @@ void AEnemyBase::DestroyEnemy(){
     
     
     //Add award points
-    mGameMode->AddPoints(mPointsAward);
+    if(mGameMode){
+        mGameMode->AddPoints(mPointsAward);
+    }
+    
     
 }
 

@@ -17,7 +17,7 @@ class PROJECTZ_API ABossBase : public AEnemyBase
     
     
 public:
-    ABossBase():AEnemyBase(){
+    ABossBase() : AEnemyBase(){
         
     }
     
