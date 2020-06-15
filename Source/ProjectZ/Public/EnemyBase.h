@@ -26,6 +26,9 @@ public:
     UPROPERTY(Category = Settings, EditAnywhere, BlueprintReadWrite)
     float Health;
     
+    UPROPERTY(Category = Settings, EditAnywhere, BlueprintReadWrite)
+    float Speed;
+    
     // Called every frame
     virtual void Tick(float DeltaTime) override;
     
