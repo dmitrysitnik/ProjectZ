@@ -28,6 +28,8 @@ public:
     UFUNCTION()
     void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
     
+    virtual void DestroyEnemy() override;
+    virtual void BeginPlay() override;
 };
 
 

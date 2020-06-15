@@ -11,9 +11,10 @@ void APlayerProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, 
     if (OtherActor)
     {
         AEnemyBase* enemy = Cast<AEnemyBase>(OtherActor);
+        
         if (enemy)
         {
-            enemy->InputDamage(1.0f);
+            enemy->InputDamage(Damage);
             Destroy();
         }
     }

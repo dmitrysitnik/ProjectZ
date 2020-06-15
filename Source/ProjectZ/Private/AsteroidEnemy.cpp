@@ -7,8 +7,7 @@
 #include "UObject/ConstructorHelpers.h"
 #include "SpaceShip.h"
 #include "Engine/StaticMesh.h"
-#include "../Public/MyEnum.h"
-#include "ProjectZGameMode.h"
+
 
 #include "Runtime/Engine/Classes/Particles/ParticleSystemComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -92,9 +91,4 @@ void AAsteroidEnemy::BeginPlay(){
 }
 
 
-void AAsteroidEnemy::DestroyEnemy(){
-    Super::DestroyEnemy();
-    
-    AProjectZGameMode* gameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
-    gameMode->SetNewState(UMyEnum::Empty);
-}
+

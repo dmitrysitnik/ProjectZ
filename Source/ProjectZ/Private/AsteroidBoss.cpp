@@ -9,6 +9,9 @@
 #include "SpaceShip.h"
 #include "Engine/StaticMesh.h"
 
+#include "../Public/MyEnum.h"
+#include "ProjectZGameMode.h"
+
 #include "Runtime/Engine/Classes/Particles/ParticleSystemComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/SceneComponent.h"
@@ -39,4 +42,18 @@ void AAsteroidBoss::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AAc
 
 void AAsteroidBoss::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit){
     
+}
+
+
+void AAsteroidBoss::DestroyEnemy(){
+    Super::DestroyEnemy();
+    
+    AProjectZGameMode* gameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
+    gameMode->SetNewState(UMyEnum::Empty);
+}
+
+
+void AAsteroidBoss::BeginPlay(){
+    Super::BeginPlay();
+    SetActorScale3D(FVector(4.0f, 4.0f, 1.0f));
 }

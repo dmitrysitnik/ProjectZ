@@ -81,7 +81,9 @@ FVector ASpawnVolume::GetRandomPointInVolume() {
 //Method to spawn actors in the volume
 void ASpawnVolume::Spawn() {
     
+    
     AProjectZGameMode* gameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
+    
     
     APawn* pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
     ASpaceShip* ship = Cast<ASpaceShip>(pawn);
@@ -92,9 +94,10 @@ void ASpawnVolume::Spawn() {
     //Spawn decorative planets
     SpawnPlanet();
     
-    if(WavesHelper->GetSpawnedEnemies() == 0 && WavesHelper->IsCanSpawn() && gameMode->GetState() != UMyEnum::Boss ){
+    if (WavesHelper->GetSpawnedEnemies() == 0 && WavesHelper->IsCanSpawn() ){
         gameMode->SetNewState(UMyEnum::Wave);
     }
+    
     
     //Check if we can create a new actor in the game
 	if (WhatToSpawn.Last() != nullptr && bCanSpawn && WavesHelper->IsCanSpawn())
@@ -119,7 +122,7 @@ void ASpawnVolume::Spawn() {
             gameMode->SetNewState(UMyEnum::Boss);
             
             //Spawn the boss
-            world->SpawnActor<AActor>(Boss, GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
+           AActor* boss = world->SpawnActor<AActor>(Boss, GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
         }
         
         //Set bCanSpawn to false and invoke the SpawnTimer
