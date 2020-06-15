@@ -15,7 +15,7 @@ void AShieldBonus::ApplyBonus(){
     
     AProjectZGameMode* gameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
     if(gameMode){
-        gameMode->SetNewState(UMyEnum::Boss);
+//        gameMode->SetNewState(UMyEnum::Boss);
     }
     
     if(mSpaceShip){

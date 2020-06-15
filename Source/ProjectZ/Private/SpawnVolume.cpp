@@ -92,7 +92,7 @@ void ASpawnVolume::Spawn() {
     //Spawn decorative planets
     SpawnPlanet();
     
-    if(WavesHelper->GetSpawnedEnemies() == 0 && WavesHelper->IsCanSpawn()){
+    if(WavesHelper->GetSpawnedEnemies() == 0 && WavesHelper->IsCanSpawn() && gameMode->GetState() != UMyEnum::Boss ){
         gameMode->SetNewState(UMyEnum::Wave);
     }
     
@@ -116,7 +116,10 @@ void ASpawnVolume::Spawn() {
         
         //Wave has ended => Set new state
         if(gameMode && !WavesHelper->IsCanSpawn()){
-            gameMode->SetNewState(UMyEnum::WaveEnd);
+            gameMode->SetNewState(UMyEnum::Boss);
+            
+            //Spawn the boss
+            world->SpawnActor<AActor>(Boss, GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
         }
         
         //Set bCanSpawn to false and invoke the SpawnTimer

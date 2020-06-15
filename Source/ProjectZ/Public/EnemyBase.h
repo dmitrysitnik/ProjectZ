@@ -33,7 +33,7 @@ public:
     virtual void Tick(float DeltaTime) override;
     
     //Function to destroy the enemy and play effects and others
-    void DestroyEnemy();
+    virtual void DestroyEnemy();
     
     // Sets default values for this actor's properties
     AEnemyBase();

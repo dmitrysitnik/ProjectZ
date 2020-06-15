@@ -32,6 +32,9 @@ public:
     UPROPERTY(EditAnywhere, Category = "Spawning")
     TArray<TSubclassOf<class AActor>> PlanetsToSpawn;
     
+    UPROPERTY(EditAnywhere, Category = "Spawning")
+    TSubclassOf<class AActor> Boss;
+    
     
     UPROPERTY(EditAnywhere, Category = "Spawning")
     int mBonusProbability = 20;

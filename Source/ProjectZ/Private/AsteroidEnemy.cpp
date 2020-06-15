@@ -7,6 +7,8 @@
 #include "UObject/ConstructorHelpers.h"
 #include "SpaceShip.h"
 #include "Engine/StaticMesh.h"
+#include "../Public/MyEnum.h"
+#include "ProjectZGameMode.h"
 
 #include "Runtime/Engine/Classes/Particles/ParticleSystemComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -27,7 +29,7 @@ AAsteroidEnemy::AAsteroidEnemy() {
     
 	smEnemy->OnComponentBeginOverlap.AddDynamic(this, &AAsteroidEnemy::OnBeginOverlap);
 	smEnemy->OnComponentHit.AddDynamic(this, &AAsteroidEnemy::OnHit);
-    
+      
     
 }
 
@@ -87,4 +89,12 @@ void AAsteroidEnemy::BeginPlay(){
     
     float randomSizeXYZ = UKismetMathLibrary::RandomFloatInRange(minAsteroidSize, maxAsteroidSize);
     SetActorScale3D(FVector(randomSizeXYZ, randomSizeXYZ, randomSizeXYZ));
+}
+
+
+void AAsteroidEnemy::DestroyEnemy(){
+    Super::DestroyEnemy();
+    
+    AProjectZGameMode* gameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
+    gameMode->SetNewState(UMyEnum::Empty);
 }
