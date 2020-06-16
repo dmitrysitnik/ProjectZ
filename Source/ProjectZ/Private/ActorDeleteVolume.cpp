@@ -13,14 +13,13 @@ AActorDeleteVolume::AActorDeleteVolume()
     
     //Create the box component
     mBox = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComponent0"));
-
+  
 }
 
 // Called when the game starts or when spawned
 void AActorDeleteVolume::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame

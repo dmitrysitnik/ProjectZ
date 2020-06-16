@@ -17,8 +17,6 @@ public:
     UPROPERTY(Category = Collision, VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
     class USphereComponent* SphereComponent;
     
-    
-    
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Appearance")
     class UMaterial* MaterialToRewrite;
     

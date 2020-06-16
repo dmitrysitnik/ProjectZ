@@ -163,6 +163,7 @@ void ASpawnVolume::WavePauseTimerExpired(){
 void ASpawnVolume::SpawnPlanet(){
     if(!bCanSpawnPlanet) return;
     
+    
     //Get max index of the Planet array to variable
     const int32 maxPlanets = PlanetsToSpawn.Num() - 1;
     
