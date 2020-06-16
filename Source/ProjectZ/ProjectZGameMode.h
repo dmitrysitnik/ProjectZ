@@ -30,6 +30,12 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void AddPoints(int points);
+
+    UFUNCTION(BlueprintCallable)
+    FORCEINLINE int GetWaveLevel(){ return Level; };
+
+    UFUNCTION()
+    void IncreaseWaveLevel();
     
     
     virtual void BeginPlay();
@@ -41,8 +47,12 @@ public:
     
     //Current points in the session
     int mPoints = 0;
+
+    //Wave level 
+    int Level = 0;
+
     
-    class ASpaceShip* player;
+    class ASpaceShip* Player;
     
     float StateTime = 2.5f;
     

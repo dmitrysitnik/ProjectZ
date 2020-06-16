@@ -49,7 +49,7 @@ void AAsteroidBoss::DestroyEnemy(){
     Super::DestroyEnemy();
     
     AProjectZGameMode* gameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
-    gameMode->SetNewState(UMyEnum::Empty);
+    gameMode->SetNewState(UMyEnum::AfterBossFight);
 }
 
 

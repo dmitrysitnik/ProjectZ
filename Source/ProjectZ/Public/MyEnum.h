@@ -19,7 +19,8 @@ class PROJECTZ_API UMyEnum : public UUserDefinedEnum
         Empty,
         Wave,
         WaveEnd,
-        Boss
+        Boss,
+        AfterBossFight
     };
     
 };

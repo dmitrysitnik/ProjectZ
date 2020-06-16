@@ -15,7 +15,9 @@ AProjectZGameMode::AProjectZGameMode()
 }
 
 void AProjectZGameMode::BeginPlay(){
-    player = Cast<ASpaceShip>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+    Player = Cast<ASpaceShip>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+
+    Level = 1;
 }
 
 void AProjectZGameMode::RestartLevel(UObject* world, FName levelName){
@@ -37,12 +39,16 @@ void AProjectZGameMode::StateTimerExpired(){
 void AProjectZGameMode::AddPoints(int points){
     
     
-    if(player){
-        if(player->IsDead()) return;
+    if(Player){
+        if(Player->IsDead()) return;
     }
     
     mPoints += points;
 }
 
+
+void AProjectZGameMode::IncreaseWaveLevel(){
+    Level++;
+}
 
 
