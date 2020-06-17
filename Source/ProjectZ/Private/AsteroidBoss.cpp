@@ -29,14 +29,17 @@ AAsteroidBoss::AAsteroidBoss() : ABossBase::ABossBase()
 
     smEnemy->SetStaticMesh(Mesh.Object);
 
-
     smEnemy->OnComponentBeginOverlap.AddDynamic(this, &AAsteroidBoss::OnBeginOverlap);
-	smEnemy->OnComponentHit.AddDynamic(this, &AAsteroidBoss::OnHit);
+	// smEnemy->OnComponentHit.AddDynamic(this, &AAsteroidBoss::OnHit);
+
+    // this->OnActorBeginOverlap.AddDynamic(this)
 }
 
 //Overlap event
 void AAsteroidBoss::OnBeginOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult)
 {
+
+    UE_LOG(LogTemp, Warning, TEXT("Overlap"));
 
     //destroy player's ship. We just turn off the input and set the actor of a player to be hidden
     if (OtherActor)
@@ -76,5 +79,5 @@ void AAsteroidBoss::DestroyEnemy()
 void AAsteroidBoss::BeginPlay()
 {
     Super::BeginPlay();
-    SetActorScale3D(FVector(4.0f, 4.0f, 4.0f));
+    SetActorScale3D(FVector(4.0f, 12.0f, 3.0f));
 }
