@@ -42,6 +42,10 @@ public:
     
     UPROPERTY(EditAnywhere, Category = "Spawning")
     int mEnemyProbability = 80;
+
+
+    UPROPERTY(EditAnywhere, Category = "Spawning")
+    TMap<int, TSubclassOf<class AActor>> LevelWeights;
     
 
 protected:

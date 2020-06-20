@@ -99,8 +99,7 @@ void ASpawnVolume::Spawn()
     //Spawn decorative planets
     SpawnPlanet();
 
-    if (WavesHelper->GetSpawnedEnemies() == 0)
-    {
+    if (WavesHelper->GetSpawnedEnemies() == 0) {
         gameMode->SetNewState(UMyEnum::Wave);
     }
 
@@ -155,6 +154,16 @@ void ASpawnVolume::WavePauseTimerExpired()
     AProjectZGameMode *gameMode = Cast<AProjectZGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
     gameMode->SetNewState(UMyEnum::Wave);
     gameMode->IncreaseWaveLevel();
+
+    int currentWave = gameMode->GetWaveLevel();
+
+    for(auto map : LevelWeights){
+        if (map.Key == currentWave)
+        {
+            WhatToSpawn.Push(map.Value);
+        }
+        
+    }
 }
 
 //Spawn a planet
@@ -198,7 +207,6 @@ int ASpawnVolume::GetRandomIndex(TArray<TSubclassOf<class AActor>> array)
 
 TSubclassOf<AActor> ASpawnVolume::GetActorToSpawn()
 {
-
     const int32 maxValue = 100;
     int32 randomNum = UKismetMathLibrary::RandomIntegerInRange(0, maxValue);
     return randomNum > mEnemyProbability ? BonusToSpawn[GetRandomIndex(BonusToSpawn)] : WhatToSpawn[GetRandomIndexOfToSpawn()];

@@ -46,10 +46,6 @@ protected:
     
     virtual void MoveToBottom();
     
-    //Ref to class that will be spawned by spawnVolume
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-    TSubclassOf<class AActor> enemyToSpawn;
-    
     UPROPERTY(VisibleAnywhere, Category = "Movement")
     class UMovementComponent* movement;
     
