@@ -18,6 +18,7 @@ AProjectZProjectile::AProjectZProjectile()
 	ProjectileMesh->SetStaticMesh(ProjectileMeshAsset.Object);
 	ProjectileMesh->SetupAttachment(RootComponent);
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectZProjectile::OnHit);		// set up a notification for when this component hits something
+	ProjectileMesh->OnComponentBeginOverlap.AddDynamic(this, &AProjectZProjectile::OnBeginOverlap);
 	RootComponent = ProjectileMesh;
 
 	// Use a ProjectileMovementComponent to govern this projectile's movement
@@ -42,4 +43,9 @@ void AProjectZProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor
 	
     
 	
+}
+
+
+void AProjectZProjectile::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult){
+
 }

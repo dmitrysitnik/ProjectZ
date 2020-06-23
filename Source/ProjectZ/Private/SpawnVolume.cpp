@@ -121,9 +121,22 @@ void ASpawnVolume::Spawn()
         if (gameMode && !WavesHelper->IsCanSpawn())
         {
             gameMode->SetNewState(UMyEnum::Boss);
+            int waveNumber = gameMode->GetWaveLevel();
+
+            //Boss object to spawn
+            TSubclassOf<AActor> bossToSpawn;
+
+            //Check if exist map key with Wave level value
+            //if no, then take 0 first boss from map. Must exist
+            TSubclassOf<AActor> *findedValue = BossOnLevel.Find(waveNumber + 1);
+            if (findedValue) {
+                bossToSpawn = BossOnLevel[waveNumber + 1];
+            } else {
+                bossToSpawn = BossOnLevel[0];
+            }
 
             //Spawn the boss
-            AActor *boss = world->SpawnActor<AActor>(Boss, GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
+            AActor *boss = world->SpawnActor<AActor>(bossToSpawn, GetRandomPointInVolume(), FRotator(0.0f, 0.0f, 0.0f));
         }
 
         //Set bCanSpawn to false and invoke the SpawnTimer

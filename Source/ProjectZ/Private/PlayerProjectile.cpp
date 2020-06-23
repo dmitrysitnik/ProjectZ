@@ -6,8 +6,6 @@
 
 
 void APlayerProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit){
-    
-UE_LOG(LogTemp, Warning, TEXT("The Projectile hitted something"));
 
     /** player's projectile behavior - destroy enemies*/
     if (OtherActor)

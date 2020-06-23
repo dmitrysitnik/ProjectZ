@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "SpaceShip.h"
 #include "GameFramework/Actor.h"
+#include "Containers/Map.h"
 
 
 #include "SpawnVolume.generated.h"
@@ -20,7 +21,7 @@ public:
 
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Spawning", meta = (AllowPrivateAccess = "true"))
-		class UBoxComponent* WhereToSpawn;
+	class UBoxComponent* WhereToSpawn;
 
 	UPROPERTY(EditAnywhere, Category = "Spawning")
     TArray<TSubclassOf<class AActor>> WhatToSpawn;
@@ -33,7 +34,7 @@ public:
     TArray<TSubclassOf<class AActor>> PlanetsToSpawn;
     
     UPROPERTY(EditAnywhere, Category = "Spawning")
-    TSubclassOf<class AActor> Boss;
+    TMap<int, TSubclassOf<class AActor>> BossOnLevel;
     
     
     UPROPERTY(EditAnywhere, Category = "Spawning")

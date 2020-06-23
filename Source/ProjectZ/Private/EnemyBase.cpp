@@ -5,6 +5,7 @@
 #include "Sound/SoundBase.h"
 #include "../ProjectZGameMode.h"
 #include "Kismet/GameplayStatics.h"
+#include "SpaceShip.h"
 
 
 
@@ -15,6 +16,8 @@ AEnemyBase::AEnemyBase()
 	PrimaryActorTick.bCanEverTick = true;
     Health = 1.0f;
     Speed = 10.0f;
+
+    // smEnemy->OnComponentBeginOverlap.AddDynamic(this, &AEnemyBase::OnBeginOverlap);
 }
 
 // Called when the game starts or when spawned
@@ -70,6 +73,25 @@ void AEnemyBase::InputDamage(float damage){
         DestroyEnemy();
     }
     
+}
+
+
+void AEnemyBase::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult){
+    //destroy player's ship. We just turn off the input and set the actor of a player to be hidden
+    // if (OtherActor)
+    // {
+    //     //Check if the actor is a player's spaceship
+    //     ASpaceShip* spaceShip = Cast<ASpaceShip>(OtherActor);
+    //     if (spaceShip)
+    //     {
+    //         /** Set the actor to be hidden */
+    //         spaceShip->Death();
+    //         //Get the player controller and turn off the input
+    //         APlayerController* playerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+    //         playerController->DisableInput(playerController);
+    //         DestroyEnemy();
+    //     }
+    // }
 }
 
 

@@ -32,7 +32,7 @@ AAsteroidBoss::AAsteroidBoss() : ABossBase::ABossBase()
     smEnemy->SetGenerateOverlapEvents(true);
     
 
-    smEnemy->OnComponentBeginOverlap.AddDynamic(this, &AAsteroidBoss::OnBeginOverlap);
+    // smEnemy->OnComponentBeginOverlap.AddDynamic(this, &AAsteroidBoss::OnBeginOverlap);
 	// smEnemy->OnComponentHit.AddDynamic(this, &AAsteroidBoss::OnHit);
 }
 
