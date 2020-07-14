@@ -27,6 +27,7 @@ AAsteroidEnemy::AAsteroidEnemy() {
 	smEnemy->SetStaticMesh(Mesh.Object);
     
 	smEnemy->OnComponentHit.AddDynamic(this, &AAsteroidEnemy::OnHit);
+    smEnemy->OnComponentBeginOverlap.AddDynamic(this, &AAsteroidEnemy::OnBeginOverlap);
       
     
 }
@@ -58,23 +59,23 @@ void AAsteroidEnemy::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 }
 
 
-// void AAsteroidEnemy::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult){
-//     //destroy player's ship. We just turn off the input and set the actor of a player to be hidden
-//     if (OtherActor)
-//     {
-//         //Check if the actor is a player's spaceship
-//         ASpaceShip* spaceShip = Cast<ASpaceShip>(OtherActor);
-//         if (spaceShip)
-//         {
-//             /** Set the actor to be hidden */
-//             spaceShip->Death();
-//             //Get the player controller and turn off the input
-//             APlayerController* playerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
-//             playerController->DisableInput(playerController);
-//             DestroyEnemy();
-//         }
-//     }
-// }
+void AAsteroidEnemy::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult){
+    //destroy player's ship. We just turn off the input and set the actor of a player to be hidden
+    if (OtherActor)
+    {
+        //Check if the actor is a player's spaceship
+        ASpaceShip* spaceShip = Cast<ASpaceShip>(OtherActor);
+        if (spaceShip)
+        {
+            /** Set the actor to be hidden */
+            spaceShip->Death();
+            //Get the player controller and turn off the input
+            APlayerController* playerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+            playerController->DisableInput(playerController);
+            DestroyEnemy();
+        }
+    }
+}
 
 
 void AAsteroidEnemy::BeginPlay(){
