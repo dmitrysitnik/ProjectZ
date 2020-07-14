@@ -57,7 +57,7 @@ void AShootingEnemy::FireShot(){
         //spawn the projectile
         AProjectZProjectile *spawned = World->SpawnActor<AProjectZProjectile>(ProjectileToSpawn, SpawnLocation, FireRotation);
         
-        //Set more bigger projectile after spawn
+        //Set little more bigger the projectile after spawn
         spawned->SetActorScale3D(FVector(2.0f, 2.0f, 2.0f));
         
         

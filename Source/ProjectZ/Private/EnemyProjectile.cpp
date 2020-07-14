@@ -3,6 +3,12 @@
 
 #include "EnemyProjectile.h"
 #include "SpaceShip.h"
+#include "GameFramework/ProjectileMovementComponent.h"
+#include "ProjectZProjectile.h"
+
+AEnemyProjectile::AEnemyProjectile(): AProjectZProjectile::AProjectZProjectile(){
+    ProjectileMovement->InitialSpeed = 1500.0f;
+}
 
 
 void AEnemyProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit){

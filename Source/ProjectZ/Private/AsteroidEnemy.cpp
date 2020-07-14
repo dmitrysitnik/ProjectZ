@@ -7,8 +7,6 @@
 #include "UObject/ConstructorHelpers.h"
 #include "SpaceShip.h"
 #include "Engine/StaticMesh.h"
-
-
 #include "Runtime/Engine/Classes/Particles/ParticleSystemComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/SceneComponent.h"

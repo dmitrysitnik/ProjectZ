@@ -66,7 +66,7 @@ void ABonusBase::ApplyBonus(){
     }
     
     if(mBonusPickedUp){
-        UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), mBonusPickedUp, GetActorLocation());
+        UGameplayStatics::SpawnEmitterAtLocation(this, mBonusPickedUp, GetActorLocation());
     }
     
 }
