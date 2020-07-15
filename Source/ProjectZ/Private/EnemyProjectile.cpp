@@ -12,7 +12,6 @@ AEnemyProjectile::AEnemyProjectile(): AProjectZProjectile::AProjectZProjectile()
 
 
 void AEnemyProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit){
-
     /** Enemy's projectile behavior - destroy player*/
     if (OtherActor)
     {   
@@ -29,7 +28,6 @@ void AEnemyProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, U
 }
 
 void AEnemyProjectile::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult){
-
         if (OtherActor)
         {
             ASpaceShip* player = Cast<ASpaceShip>(OtherActor);

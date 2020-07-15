@@ -71,8 +71,6 @@ void ABonusBase::ApplyBonus(){
     
 }
 
-
-
 void ABonusBase::RewriteMaterial(){
     if(MaterialToRewrite){
         skMeshBonus->SetMaterial(0, MaterialToRewrite);

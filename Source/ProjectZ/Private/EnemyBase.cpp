@@ -75,7 +75,8 @@ void AEnemyBase::InputDamage(float damage){
 
 
 void AEnemyBase::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult){
-    //Will implement in child classes
+    //Will implemented in child classes
+    UE_LOG(LogTemp, Warning, TEXT("Overlap Base enemy"));
 }
 
 

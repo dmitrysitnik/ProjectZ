@@ -22,6 +22,10 @@ AShootingEnemy::AShootingEnemy(){
     RootComponent = smEnemy;
     smEnemy->SetStaticMesh(Mesh.Object);
     
+
+    smEnemy->OnComponentHit.AddDynamic(this, &AShootingEnemy::OnHit);
+    smEnemy->OnComponentBeginOverlap.AddDynamic(this, &AShootingEnemy::OnBeginOverlap);
+
     //Base GunOffset setup
     GunOffset = FVector(-200.0f, 0.0f, 0.0f);
     FireRate = 2.0f;
@@ -57,6 +61,10 @@ void AShootingEnemy::FireShot(){
         //spawn the projectile
         AProjectZProjectile *spawned = World->SpawnActor<AProjectZProjectile>(ProjectileToSpawn, SpawnLocation, FireRotation);
         
+        if (!spawned){
+            return;
+        }
+
         //Set little more bigger the projectile after spawn
         spawned->SetActorScale3D(FVector(2.0f, 2.0f, 2.0f));
         
@@ -78,4 +86,43 @@ void AShootingEnemy::FireShot(){
 
 void AShootingEnemy::FireTimerExpired(){
     bCanFire = true;
+}
+
+
+void AShootingEnemy::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit){
+    UE_LOG(LogTemp, Warning, TEXT("Hit Shooting enemy"));
+
+    // //destroy player's ship. We just turn off the input and set the actor of a player to be hidden
+	// if (OtherActor)
+	// {
+    //     //Check if the actor is a player's spaceship
+	// 	ASpaceShip* spaceShip = Cast<ASpaceShip>(OtherActor);
+	// 	if (spaceShip)
+	// 	{
+    //         spaceShip->Death();
+    //         //Get the player controller and turn off the input
+    //         // APlayerController* playerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+    //         // playerController->DisableInput(playerController);
+
+    //         DestroyEnemy();
+	// 	}
+	// }
+}
+
+void AShootingEnemy::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult){
+   //destroy player's ship. We just turn off the input and set the actor of a player to be hidden
+	if (OtherActor)
+	{
+        //Check if the actor is a player's spaceship
+		ASpaceShip* spaceShip = Cast<ASpaceShip>(OtherActor);
+		if (spaceShip)
+		{
+            spaceShip->Death();
+            //Get the player controller and turn off the input
+            // APlayerController* playerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+            // playerController->DisableInput(playerController);
+
+            DestroyEnemy();
+		}
+	}
 }

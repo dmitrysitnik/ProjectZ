@@ -37,7 +37,11 @@ class PROJECTZ_API AShootingEnemy : public AEnemyBase
     
     void FireTimerExpired();
     
-    
+    //Calling function on Hit Event
+    UFUNCTION()
+    void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+    virtual void OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) override;
     
 protected:
     bool bCanFire;
